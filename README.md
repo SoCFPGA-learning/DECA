@@ -31,7 +31,7 @@ Se necesita la [colaboración](https://github.com/SoCFPGA-learning/General/tree/
 * [Telegrom group](https://t.me/Deca_Max10_FPGA) 
 * [Discord channel](https://discord.gg/YDdmtwh) 
 
-### **Useful sites with info about the CYC1000 board:**
+### **Useful sites with info about the DECA board:**
 
 * Buy at Arrow https://www.arrow.com/en/products/deca/arrow-development-tools?q=DECA
 
