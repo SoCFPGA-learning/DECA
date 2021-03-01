@@ -18,19 +18,18 @@ The folders contain the following information:
 
 * **Others**: Some other content 
 
-  
+### **Contributing:**
 
-### **Collaboration:**
-
-Collaboration is needed to increase the amount of resources and projects available to the community. Any language can be used for documenting the projects.
-
-
+[Contributing](https://github.com/SoCFPGA-learning/General/tree/main/Contributing) is needed to increase the amount of resources and projects available to the community. Any language can be used for documenting the projects.
 
 ### **Colaboraciones:**
 
-Se necesita la colaboración para poder incrementar los recursos disponibles para la comunidad entorno esta placa de desarrollo.    La documentación que acompañe los proyectos puede estar redactada en cualquier idioma.
+Se necesita la [colaboración](https://github.com/SoCFPGA-learning/General/tree/main/Github_ayuda) para poder incrementar los recursos disponibles para la comunidad entorno esta placa de desarrollo.    La documentación que acompañe los proyectos puede estar redactada en cualquier idioma.
 
+### Other media
 
+* [Telegrom group](https://t.me/Sockit_FPGA) 
+* [Discord channel](https://discord.gg/YDdmtwh) 
 
 ### **Useful sites with info about the CYC1000 board:**
 
