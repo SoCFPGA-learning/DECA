@@ -17,7 +17,7 @@
 
 See full schematic [sdram_xs-SchDoc.pdf](sdram_xs-SchDoc.pdf) 
 
-See Kicad [files](.\kicad\).
+See Kicad folder.
 
 ![image-20210420203647994](schematic.png)
 
@@ -29,7 +29,7 @@ See Kicad [files](.\kicad\).
 
 * Cut pins in the stackable header that correspond to pins 12, 29, 30 from the SDRAM module. 
 * Solder external pins to the SDRAM module in pins 12, 29 & 30.
-* Plug SDRAM module into the stakable header and this into the P8 DECA connector
+* Plug SDRAM module into the stackable header and this into the P8 DECA connector.
 * Connect jumper wires at external soldered pins in 12, 29 & 30 according to schematic. It is important to connect at least one of the ground pins (I suggest pin 12) from SDRAM module to GND in P8 pins (1, 2).  Pin 29 (3V3) and pin 30 (GND) from SDRAM can be connected to P9 connector pins 3 (3V3) and 1 (GND).
 
 ### ![stackable-headers](stackable-headers.jpg)
@@ -44,7 +44,7 @@ See Kicad [files](.\kicad\).
 
 I tested the code with [Litex](https://github.com/enjoy-digital/litex). 
 
-If upstream Litex repo is not updated you can download and replace target and platform files from this [commit](https://github.com/hansfbaier/litex-boards/commit/6a85046e3381f0dc00edc71ffc7ab56b07bf6c1c) of Hans Baier 
+If upstream Litex repo is not updated you can download and replace target and platform files from this [commit](https://github.com/hansfbaier/litex-boards/commit/6a85046e3381f0dc00edc71ffc7ab56b07bf6c1c) of Hans Baier. 
 
 ```sh
 #Compile and load Litex for DECA board with Mister SDRAM option 
@@ -57,4 +57,6 @@ mem_test 0x40000000 0x2000000
 mem_speed 0x40000000 0x2000000
 ```
 
-![image-20210420205918412](litex.png)
+
+
+![image-20210420212040405](litex.png)
