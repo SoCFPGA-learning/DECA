@@ -1,6 +1,6 @@
 # Projects
 
-Check project folders.
+Check projects folders.
 
 
 
