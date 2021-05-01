@@ -40,15 +40,16 @@ See Kicad folder.
 
 
 
-### Code test
+### Memory test
 
-I tested the code with [Litex](https://github.com/enjoy-digital/litex). 
-
-If upstream Litex repo is not updated you can download and replace target and platform files from this [commit](https://github.com/hansfbaier/litex-boards/commit/6a85046e3381f0dc00edc71ffc7ab56b07bf6c1c) of Hans Baier. 
+I tested the memory with [Litex](https://github.com/enjoy-digital/litex) memory test. 
 
 ```sh
+# Download specific Deca target from https://github.com/SoCFPGA-learning/DECA/blob/main/deca-litex-target.py into the folder litex-boards/litex_boards/targets and make it executable. Thanks to Hans Baier for it.
+wget https://github.com/SoCFPGA-learning/DECA/raw/main/deca-litex-target.py
+chmod +x deca-litex-target.py
 #Compile and load Litex for DECA board with Mister SDRAM option 
-./terasic_deca.py --uart-name=gpio_serial --mister-sdram-xs-v22 --build --load
+./deca-litex-target.py --uart-name=gpio_serial --mister-sdram-xs-v22 --build --load
 #Serial pins ("tx", "P8:3"), ("rx", "P8:4"),  (ground pin 1/2) 
 #terminal output
 picocom -b 115200 /dev/ttyUSB0
