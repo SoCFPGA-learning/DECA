@@ -45,7 +45,9 @@ See Kicad folder.
 I tested the memory with [Litex](https://github.com/enjoy-digital/litex) memory test. 
 
 ```sh
-# Download specific Deca target from https://github.com/SoCFPGA-learning/DECA/blob/main/deca-litex-target.py into the folder litex-boards/litex_boards/targets and make it executable. Thanks to Hans Baier for it.
+# Download specific Deca target from https://github.com/SoCFPGA-learning/DECA/blob/main/deca-litex-target.py 
+#into the folder litex-boards/litex_boards/targets and make it executable. 
+#Thanks to Hans Baier for it.
 wget https://github.com/SoCFPGA-learning/DECA/raw/main/deca-litex-target.py
 chmod +x deca-litex-target.py
 #Compile and load Litex for DECA board with Mister SDRAM option 
