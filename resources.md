@@ -1,6 +1,6 @@
 # DECA Resources
 
-Follows a list of useful resources that were published mainly in the [DECA telegram group](https://t.me/Deca_Max10_FPGA) that are related to Max10 FPGA family.
+Follows a list of useful resources that were published mainly in the [DECA telegram group](https://t.me/Deca_Max10_FPGA) that are related to  DECA and Max10 FPGA family.
 
 Updated until (not included):  28/01/21 
 
