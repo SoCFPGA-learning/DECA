@@ -18,6 +18,12 @@ The folders contain the following information:
 
 * **Others**: Some other content 
 
+### **Resources:**
+
+* [List of resources](resources.md) 
+
+
+
 ### **Contributing:**
 
 [Contributing](https://github.com/SoCFPGA-learning/General/tree/main/Contributing) is needed to increase the amount of resources and projects available to the community. Any language can be used for documenting the projects.
@@ -28,7 +34,7 @@ Se necesita la [colaboración](https://github.com/SoCFPGA-learning/General/tree/
 
 ### Other media
 
-* [Telegrom group](https://t.me/Deca_Max10_FPGA) 
+* [Telegram group](https://t.me/Deca_Max10_FPGA) 
 * [Discord channel](https://discord.gg/YDdmtwh) 
 
 ### **Useful sites with info about the DECA board:**
