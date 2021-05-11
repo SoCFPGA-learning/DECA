@@ -18,11 +18,15 @@ The folders contain the following information:
 
 * **Others**: Some other content 
 
-### **Resources:**
+### **Useful resources:**
 
 * [List of resources](resources.md) 
+* Buy at Arrow https://www.arrow.com/en/products/deca/arrow-development-tools
+* Intel Community Knowledge Base -DECA https://community.intel.com/t5/FPGA-Wiki/DECA/ta-p/735458
 
+### **Similar boards**
 
+* DE10-Lite (MAX10 10M50DAF484C7G)
 
 ### **Contributing:**
 
@@ -39,6 +43,5 @@ Se necesita la [colaboración](https://github.com/SoCFPGA-learning/General/tree/
 
 ### **Useful sites with info about the DECA board:**
 
-* Buy at Arrow https://www.arrow.com/en/products/deca/arrow-development-tools?q=DECA
 
-  
+
