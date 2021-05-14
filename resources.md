@@ -54,13 +54,21 @@ Updated until:  11/05/21
 ### DECA Projects:
 
 * Altera MAX10 DECA Board Fun Projects – Part 1 Graphics – Ting's FPGA, HPC and Embedded Blog https://tingcao.wordpress.com/2015/09/22/deca-projects-part-1-graphics/ 
+
 * Interfacing a BeagleBone BLE/Wi-Fi Cape with an Arrow Max10 DECA board: Part 1 https://e2e.ti.com/blogs_/b/process/archive/2015/10/12/interfacing-a-beaglebone-ble-wi-fi-cape-with-an-arrow-max10-deca-board-part-1
+
 * Proyecto final de carrera - Desarrollo de una aplicación de detección de gestos y medida de distancias http://oa.upm.es/52363/
+
 * Stepper Motor Design Example on MAX 10 DECA Board  https://fpgacloud.intel.com/devstore/platform/16.0.0/Standard/stepper-motor-design-example-on-max-10-deca-board/
-* Zephyr os + nios + max 10 https://docs.zephyrproject.org/latest/boards/nios2/altera_max10/doc/index.html
-* Data I/O Sensor and LED Prototype https://ceias.nau.edu/capstone/projects/EE/2018/InternetFPGA/prototyping
-* Graphics Rendering on Altera MAX10 Arrow/Terasic DECA with VIP https://twitter.com/artchula/status/945177626431442944?s=20
+
 * Quickly update a bitstream with new RAM contents https://github.com/tomverbeure/fpga_quick_ram_update
+
+* Others (without source code):
+
+  * Data I/O Sensor and LED Prototype https://ceias.nau.edu/capstone/projects/EE/2018/InternetFPGA/prototyping
+  * Graphics Rendering on Altera MAX10 Arrow/Terasic DECA with VIP https://twitter.com/artchula/status/945177626431442944?s=20
+
+  
 
 
 
@@ -73,6 +81,7 @@ Updated until:  11/05/21
   * HLS NES emulator https://github.com/kura197/NES-HLS (DE10-Lite (MAX10 10M50DAF484C7G))
   * DE10-Lite FPGA-based emulation of the Nintendo https://github.com/sethsawant/de10boy (DE10-Lite)
   * Implemented a small CGA -> VGA scandoubler on the DE10-Lite https://twitter.com/_stderr/status/966592365321441280 (DE10-Lite)
+* Zephyr os + nios + max 10 https://docs.zephyrproject.org/latest/boards/nios2/altera_max10/doc/index.html (Altera Max 10)
 * RISC-V https://github.com/syntacore/scr1-sdk (DE10-Lite)
 * Pico RISCV32 for the DE10-Lite (MAX10 based) https://github.com/raps500/07_PicoRV32 (DE10-Lite)
 * FPGA SDRAM controller https://github.com/Muellegr/FPGA-Max10-SDRAM-Project-1 (DE10-Lite)
