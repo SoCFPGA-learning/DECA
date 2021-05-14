@@ -77,7 +77,7 @@ Updated until:  11/05/21
   * HLS NES emulator https://github.com/kura197/NES-HLS (DE10-Lite (MAX10 10M50DAF484C7G))
   * DE10-Lite FPGA-based emulation of the Nintendo https://github.com/sethsawant/de10boy (DE10-Lite)
   * Implemented a small CGA -> VGA scandoubler on the DE10-Lite https://twitter.com/_stderr/status/966592365321441280 (DE10-Lite)
-* Zephyr os + nios + max 10 https://docs.zephyrproject.org/latest/boards/nios2/altera_max10/doc/index.html (Altera Max 10)
+* Zephyr OS + NIOS II https://docs.zephyrproject.org/latest/boards/nios2/altera_max10/doc/index.html (Altera Max 10)
 * RISC-V https://github.com/syntacore/scr1-sdk (DE10-Lite)
 * Pico RISCV32 for the DE10-Lite (MAX10 based) https://github.com/raps500/07_PicoRV32 (DE10-Lite)
 * FPGA SDRAM controller https://github.com/Muellegr/FPGA-Max10-SDRAM-Project-1 (DE10-Lite)
@@ -85,10 +85,10 @@ Updated until:  11/05/21
 * Tutorial and example projects for the Arrow MAX1000 FPGA board  https://github.com/vpecanins/max1000-tutorial  (MAX1000)
 * Run DOS with 8086 on FPGA based on the next186 https://github.com/hi631/FPGA_DOS   (MAX1000)
 * CPU86, the Free VHDL CPU8088 IP core https://github.com/nsauzede/cpu86 (MAX1000)
+* Persistence of vision hack https://hackaday.com/2018/08/31/max1000-tutorial-is-quite-persistent/ (MAX1000)
 * The FPGA FM Stereo Radio project for the CQ MAX10-FB https://github.com/Rapidnack/MAX10FB_FM_Stereo   ( CQ MAX10-FB )
 * The FPGASID-Project aims to rebuild the famous Synthesizer chip MOS6581 know from Commodore 8-bit computers.  http://www.fpgasid.de/project-definition  (Altera MAX10 FPGA)
-* Dual Channel Buffered FPGA Oscilloscope https://www.youtube.com/watch?v=9T39UXb8dzs
-* X-Ray Vision for FPGAs: Using Verifla https://hackaday.com/2018/11/09/x-ray-vision-for-fpgas-using-verifla/  
+* X-Ray Vision for FPGAs: Using Verifla https://hackaday.com/2018/11/09/x-ray-vision-for-fpgas-using-verifla/  (MAX10)
 
 
 
@@ -97,12 +97,18 @@ Updated until:  11/05/21
 * Oscilloscope
 
   * agural/FPGA-Oscilloscope https://github.com/agural/FPGA-Oscilloscope Design, Documentation, Schematic, Board, Code files for the FPGA Oscilloscope project using an Altera Cyclone III FPGA.  
-
   * ThanushanK/DigitalOscilloscope https://github.com/ThanushanK/DigitalOscilloscope
     Created a digital oscilloscope in Verilog (using the Altera DE2 board) which displays an inputted audio signal’s waveform onto a VGA display 
   * Digital oscilloscope 1 - first design https://www.fpga4fun.com/digitalscope_hdl1.html
+  * Dual Channel Buffered FPGA Oscilloscope https://www.youtube.com/watch?v=9T39UXb8dzs
 
+* Logic analyzer
 
+  * FPGA Based Logic Analyzer (VHDL)  https://www.sump.org/projects/analyzer/ ( Xilinx Spartan 3)
+
+  * Open Bench Logic Sniffer (Verilog) http://dangerousprototypes.com/docs/Open_Bench_Logic_Sniffer  Code documentation http://dangerousprototypes.com/docs/SUMP_logic_analyzer_Verilog_Demon_core_documentation ( Xilinx Spartan 3 )
+
+    
 
 ### Other MAX10 boards:
 
