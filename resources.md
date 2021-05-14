@@ -45,8 +45,6 @@ Updated until:  11/05/21
 
 ### DECA Projects:
 
-* Altera MAX10 DECA Board Fun Projects – Part 1 Graphics – Ting's FPGA, HPC and Embedded Blog https://tingcao.wordpress.com/2015/09/22/deca-projects-part-1-graphics/ 
-
 * Interfacing a BeagleBone BLE/Wi-Fi Cape with an Arrow Max10 DECA board: Part 1 https://e2e.ti.com/blogs_/b/process/archive/2015/10/12/interfacing-a-beaglebone-ble-wi-fi-cape-with-an-arrow-max10-deca-board-part-1
 
 * Proyecto final de carrera - Desarrollo de una aplicación de detección de gestos y medida de distancias http://oa.upm.es/52363/
@@ -54,6 +52,8 @@ Updated until:  11/05/21
 * Stepper Motor Design Example on MAX 10 DECA Board  https://fpgacloud.intel.com/devstore/platform/16.0.0/Standard/stepper-motor-design-example-on-max-10-deca-board/
 
 * Quickly update a bitstream with new RAM contents https://github.com/tomverbeure/fpga_quick_ram_update
+
+* Altera MAX10 DECA Board Fun Projects – Part 1 Graphics https://tingcao.wordpress.com/2015/09/22/deca-projects-part-1-graphics/  This design implements frame buffer based graphics on Altera MAX10 Arrow/Terasic DECA board in VIP (Video and Image Processing Suite).  [needs VIP license]
 
 * Others (without source code):
 
@@ -64,7 +64,7 @@ Updated until:  11/05/21
 
 ### DECA peripherals Projects:
 
-* HDMI video https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
+* HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
 
   
 
@@ -112,8 +112,8 @@ Updated until:  11/05/21
 
 ### Other MAX10 boards:
 
-* Terasic DE10-Lite https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1021 MAX10M50 , 64MB SDRAM, 444 VGA
-* MAX1000 https://www.arrow.com/en/products/max1000/arrow-development-tools 10M08, 8 MB SDRAM
+* Terasic DE10-Lite https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1021 (MAX10M50 , 64MB SDRAM, 444 VGA)
+* MAX1000 https://www.arrow.com/en/products/max1000/arrow-development-tools (10M08, 8 MB SDRAM)
 * maXimator https://maximator-fpga.org
 * CQ MAX10-FB (Japanesse board)
 * MAX® 10 FPGA 10M50 Evaluation Kit https://www.intel.com/content/www/us/en/programmable/products/boards_and_kits/dev-kits/altera/kit-max-10m50-evaluation.html
