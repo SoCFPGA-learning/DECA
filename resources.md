@@ -43,12 +43,6 @@ Updated until:  11/05/21
 
 
 
-### Parts Projects:
-
-* HDMI video https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
-
-  
-
 ### DECA Projects:
 
 * Altera MAX10 DECA Board Fun Projects – Part 1 Graphics – Ting's FPGA, HPC and Embedded Blog https://tingcao.wordpress.com/2015/09/22/deca-projects-part-1-graphics/ 
@@ -68,7 +62,11 @@ Updated until:  11/05/21
 
   
 
+### DECA peripherals Projects:
 
+* HDMI video https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
+
+  
 
 ### Max10 Projects:
 
