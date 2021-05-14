@@ -26,13 +26,16 @@ Updated until:  11/05/21
 
   
 
-### Labs / Tutorials:
+### DECA Labs / Tutorials:
 
 *  **DECA Intel Community Knowledge Base** https://community.intel.com/t5/FPGA-Wiki/DECA/ta-p/735458      (GitHub with material from  Intel Community Knowledge Base  https://github.com/snikrepmada/DECA )
-  
-* DECA Linux Tutorial For the MAX® 10 DECA FPGA Evaluation Kit https://www.intel.com/content/dam/altera-www/global/en_US/uploads/c/ca/DECA-Linux-Tutorial_15_1.pdf
+*  DECA Linux Tutorial For the MAX® 10 DECA FPGA Evaluation Kit https://www.intel.com/content/dam/altera-www/global/en_US/uploads/c/ca/DECA-Linux-Tutorial_15_1.pdf
 
-* MAX1000:  All Verilog, C, and Quartus project files for the Texas State University EE Senior Design team 2.09FPGA/Verilog Project [Fall2019/Spring2020] - Creating FPGA examples for future students using the Arrow Max1000 https://github.com/Grant-Seligman/Max1000-FPGA-Senior-Design-Verilog-Code 
+### MAX10 Labs / Tutorials:
+
+*  MAX1000:  All Verilog, C, and Quartus project files for the Texas State University EE Senior Design team 2.09FPGA/Verilog Project [Fall2019/Spring2020] - Creating FPGA examples for future students using the Arrow Max1000 https://github.com/Grant-Seligman/Max1000-FPGA-Senior-Design-Verilog-Code 
+
+* DE10-Lite: EEC 180 - Digital Systems II - Spring 2021 - University of California - https://www.ece.ucdavis.edu/~bbaas/180/
 
   
 
@@ -73,9 +76,8 @@ Updated until:  11/05/21
 * maXimator - Altera MAX10 FPGA development board https://maximator-fpga.org/examples/ (maXimator)
 * Consoles / Arcades
   * NES, C64, Vextrex, Arcades  http://darfpga.blogspot.com/  (VHDL code)  https://sourceforge.net/projects/darfpga/files/Software%20VHDL/ (DE10-Lite)  
-  * NES on MAX10 FPGA Classic NES implementation on Altera's MAX10 using the Marutsu-CQ module https://www.hackster.io/Rekabraham/nes-on-max10-fpga-0bd7ea (Altera MAX10 FPGA)
   * HLS NES emulator https://github.com/kura197/NES-HLS (DE10-Lite (MAX10 10M50DAF484C7G))
-  * DE10-Lite FPGA-based emulation of the Nintendo https://github.com/sethsawant/de10boy (DE10-Lite)
+  * DE10-Lite FPGA-based emulation of the Nintendo Gameboy https://github.com/sethsawant/de10boy (DE10-Lite)
   * Implemented a small CGA -> VGA scandoubler on the DE10-Lite https://twitter.com/_stderr/status/966592365321441280 (DE10-Lite)
 * Zephyr OS + NIOS II https://docs.zephyrproject.org/latest/boards/nios2/altera_max10/doc/index.html (Altera Max 10)
 * RISC-V https://github.com/syntacore/scr1-sdk (DE10-Lite)
@@ -92,11 +94,11 @@ Updated until:  11/05/21
 
 
 
-### Other FPGA projects:
+### Other FPGA families projects:
 
 * Oscilloscope
 
-  * agural/FPGA-Oscilloscope https://github.com/agural/FPGA-Oscilloscope Design, Documentation, Schematic, Board, Code files for the FPGA Oscilloscope project using an Altera Cyclone III FPGA.  
+  * agural/FPGA-Oscillocope https://github.com/agural/FPGA-Oscilloscope Design, Documentation, Schematic, Board, Code files for the FPGA Oscilloscope project using an Altera Cyclone III FPGA.  
   * ThanushanK/DigitalOscilloscope https://github.com/ThanushanK/DigitalOscilloscope
     Created a digital oscilloscope in Verilog (using the Altera DE2 board) which displays an inputted audio signal’s waveform onto a VGA display 
   * Digital oscilloscope 1 - first design https://www.fpga4fun.com/digitalscope_hdl1.html
