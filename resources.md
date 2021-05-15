@@ -35,6 +35,8 @@ Updated until:  11/05/21
 
 *  MAX1000:  All Verilog, C, and Quartus project files for the Texas State University EE Senior Design team 2.09FPGA/Verilog Project [Fall2019/Spring2020] - Creating FPGA examples for future students using the Arrow Max1000 https://github.com/Grant-Seligman/Max1000-FPGA-Senior-Design-Verilog-Code 
 
+*  MAX1000: Tutorial and example projects for the Arrow MAX1000 FPGA board  https://github.com/vpecanins/max1000-tutorial 
+
 * DE10-Lite: EEC 180 - Digital Systems II - Spring 2021 - University of California - https://www.ece.ucdavis.edu/~bbaas/180/
 
   
@@ -84,7 +86,6 @@ Updated until:  11/05/21
 * Pico RISCV32 for the DE10-Lite (MAX10 based) https://github.com/raps500/07_PicoRV32 (DE10-Lite)
 * FPGA SDRAM controller https://github.com/Muellegr/FPGA-Max10-SDRAM-Project-1 (DE10-Lite)
 * Easy FPGA CPU with MAX1000 (NIOS II) https://hackaday.com/2018/10/05/easy-fpga-cpu-with-max1000/  (MAX1000)
-* Tutorial and example projects for the Arrow MAX1000 FPGA board  https://github.com/vpecanins/max1000-tutorial  (MAX1000)
 * Run DOS with 8086 on FPGA based on the next186 https://github.com/hi631/FPGA_DOS   (MAX1000)
 * CPU86, the Free VHDL CPU8088 IP core https://github.com/nsauzede/cpu86 (MAX1000)
 * Persistence of vision hack https://hackaday.com/2018/08/31/max1000-tutorial-is-quite-persistent/ (MAX1000)
