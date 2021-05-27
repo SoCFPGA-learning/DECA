@@ -2,7 +2,9 @@
 
 Follows a list of useful resources that were published mainly in the [DECA telegram group](https://t.me/Deca_Max10_FPGA) that are related to  DECA and Max10 FPGA family.
 
-Updated until:  11/05/21 
+(updated until 27/05/21)
+
+[See also General FPGA Resources list.](https://github.com/SoCFPGA-learning/General/resources.md)
 
 ### General:
 
@@ -34,12 +36,10 @@ Updated until:  11/05/21
 ### MAX10 Labs / Tutorials:
 
 *  MAX1000:  All Verilog, C, and Quartus project files for the Texas State University EE Senior Design team 2.09FPGA/Verilog Project [Fall2019/Spring2020] - Creating FPGA examples for future students using the Arrow Max1000 https://github.com/Grant-Seligman/Max1000-FPGA-Senior-Design-Verilog-Code 
-
 *  MAX1000: Tutorial and example projects for the Arrow MAX1000 FPGA board  https://github.com/vpecanins/max1000-tutorial 
+*  DE10-Lite: EEC 180 - Digital Systems II - Spring 2021 - University of California - https://www.ece.ucdavis.edu/~bbaas/180/
 
-* DE10-Lite: EEC 180 - Digital Systems II - Spring 2021 - University of California - https://www.ece.ucdavis.edu/~bbaas/180/
 
-  
 
 ### Reference Designs:
 
@@ -59,6 +59,8 @@ Updated until:  11/05/21
 * Quickly update a bitstream with new RAM contents https://github.com/tomverbeure/fpga_quick_ram_update
 
 * Altera MAX10 DECA Board Fun Projects – Part 1 Graphics https://tingcao.wordpress.com/2015/09/22/deca-projects-part-1-graphics/  This design implements frame buffer based graphics on Altera MAX10 Arrow/Terasic DECA board in VIP (Video and Image Processing Suite).  [needs VIP license]
+
+* Audio card with USB interface https://github.com/stsrc/audioCard
 
 * Others (without source code):
 
@@ -94,24 +96,6 @@ Updated until:  11/05/21
 * X-Ray Vision for FPGAs: Using Verifla https://hackaday.com/2018/11/09/x-ray-vision-for-fpgas-using-verifla/  (MAX10)
 
 
-
-### Other FPGA families projects:
-
-* Oscilloscope
-
-  * agural/FPGA-Oscillocope https://github.com/agural/FPGA-Oscilloscope Design, Documentation, Schematic, Board, Code files for the FPGA Oscilloscope project using an Altera Cyclone III FPGA.  
-  * ThanushanK/DigitalOscilloscope https://github.com/ThanushanK/DigitalOscilloscope
-    Created a digital oscilloscope in Verilog (using the Altera DE2 board) which displays an inputted audio signal’s waveform onto a VGA display 
-  * Digital oscilloscope 1 - first design https://www.fpga4fun.com/digitalscope_hdl1.html
-  * Dual Channel Buffered FPGA Oscilloscope https://www.youtube.com/watch?v=9T39UXb8dzs
-
-* Logic analyzer
-
-  * FPGA Based Logic Analyzer (VHDL)  https://www.sump.org/projects/analyzer/ ( Xilinx Spartan 3)
-
-  * Open Bench Logic Sniffer (Verilog) http://dangerousprototypes.com/docs/Open_Bench_Logic_Sniffer  Code documentation http://dangerousprototypes.com/docs/SUMP_logic_analyzer_Verilog_Demon_core_documentation ( Xilinx Spartan 3 )
-
-    
 
 ### Other MAX10 boards:
 
