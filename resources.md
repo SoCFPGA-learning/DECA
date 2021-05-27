@@ -4,7 +4,7 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
 (updated until 27/05/21)
 
-[See also General FPGA Resources list.](https://github.com/SoCFPGA-learning/General/resources.md)
+[See also General FPGA Resources list](https://github.com/SoCFPGA-learning/General/blob/main/resources.md)
 
 ### General:
 
