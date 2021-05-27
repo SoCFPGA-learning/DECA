@@ -18,11 +18,16 @@ The folders contain the following information:
 
 * **Others**: Some other content 
 
-### **Useful resources:**
+## **Useful resources:**
 
 * [List of resources](resources.md) 
 * Buy at Arrow https://www.arrow.com/en/products/deca/arrow-development-tools
 * Intel Community Knowledge Base -DECA https://community.intel.com/t5/FPGA-Wiki/DECA/ta-p/735458
+
+## **Quartus configuration**
+
+* Device: 10M50DAF484C6GES
+* Device and Pin options > Configuration> Single Uncompressed image with Memory initialization (512 kbits UFM)  ([see notes](http://retroramblings.net/?p=1509))
 
 ### **Similar boards**
 
