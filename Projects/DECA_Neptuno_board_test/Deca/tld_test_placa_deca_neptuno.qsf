@@ -1,0 +1,269 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+# Date created = 21:03:07  May 26, 2021
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		tld_test_placa_deca_neptuno_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C6GES
+set_global_assignment -name TOP_LEVEL_ENTITY tld_test_placa_deca_neptuno
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:03:07  MAY 26, 2021"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+
+
+###################################
+
+# Reloj
+set_location_assignment PIN_M8 -to clk50mhz
+
+# Video
+set_location_assignment PIN_W7 -to hsync
+set_location_assignment PIN_W6 -to vsync
+set_location_assignment PIN_AA7 -to b[2]
+set_location_assignment PIN_Y7 -to b[1]
+set_location_assignment PIN_U7 -to b[0]
+set_location_assignment PIN_AB8 -to g[2]
+set_location_assignment PIN_AB7 -to g[1]
+set_location_assignment PIN_R11 -to g[0]
+set_location_assignment PIN_AB6 -to r[2]
+set_location_assignment PIN_AA6 -to r[1]
+set_location_assignment PIN_V10 -to r[0]
+
+# Teclado (GPIO1_D0/1) y ratón (GPIO1_D16/17)
+set_location_assignment PIN_Y5 -to clkps2
+set_location_assignment PIN_Y6 -to dataps2
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to clkps2
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to dataps2
+set_location_assignment PIN_W9 -to mouseclk
+set_location_assignment PIN_W5 -to mousedata
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseclk
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mousedata
+
+# Audio (GPIO1_D18/19)
+set_location_assignment PIN_R9 -to audio_out_left
+set_location_assignment PIN_W4 -to audio_out_right
+
+# SDRAM
+set_location_assignment PIN_Y17 -to sdram_addr[0]
+set_location_assignment PIN_W14 -to sdram_addr[1]
+set_location_assignment PIN_U15 -to sdram_addr[2]
+set_location_assignment PIN_R13 -to sdram_addr[3]
+set_location_assignment PIN_Y13 -to sdram_addr[4]
+set_location_assignment PIN_AB11 -to sdram_addr[5]
+set_location_assignment PIN_AA11 -to sdram_addr[6]
+set_location_assignment PIN_AB12 -to sdram_addr[7]
+set_location_assignment PIN_AA12 -to sdram_addr[8]
+set_location_assignment PIN_AB13 -to sdram_addr[9]
+set_location_assignment PIN_V14 -to sdram_addr[10]
+set_location_assignment PIN_AA13 -to sdram_addr[11]
+set_location_assignment PIN_AB14 -to sdram_addr[12]
+#
+
+set_location_assignment PIN_AA20 -to sdram_dq[0]
+set_location_assignment PIN_AA19 -to sdram_dq[1]
+set_location_assignment PIN_AB21 -to sdram_dq[2]
+set_location_assignment PIN_AB20 -to sdram_dq[3]
+set_location_assignment PIN_AB19 -to sdram_dq[4]
+set_location_assignment PIN_Y16 -to sdram_dq[5]
+set_location_assignment PIN_V16 -to sdram_dq[6]
+set_location_assignment PIN_AB18 -to sdram_dq[7]
+set_location_assignment PIN_AA15 -to sdram_dq[8]
+set_location_assignment PIN_Y14 -to sdram_dq[9]
+set_location_assignment PIN_W15 -to sdram_dq[10]
+set_location_assignment PIN_AB15 -to sdram_dq[11]
+set_location_assignment PIN_W16 -to sdram_dq[12]
+set_location_assignment PIN_AB16 -to sdram_dq[13]
+set_location_assignment PIN_V15 -to sdram_dq[14]
+set_location_assignment PIN_W17 -to sdram_dq[15]
+#
+
+# CKE not connected on XS 2.2/2.4.
+set_location_assignment PIN_AA16 -to sdram_cke
+set_location_assignment PIN_AA14 -to sdram_clk
+set_location_assignment PIN_W12 -to sdram_cas_n
+set_location_assignment PIN_W11 -to sdram_ras_n
+set_location_assignment PIN_AB10 -to sdram_we_n
+set_location_assignment PIN_V12 -to sdram_cs_n
+#
+
+set_location_assignment PIN_V11 -to sdram_ba[0]
+set_location_assignment PIN_V13 -to sdram_ba[1]
+
+# DQML/DQMH not connected on XS 2.2/2.4
+set_location_assignment PIN_Y11 -to sdram_dqml_n
+set_location_assignment PIN_W13 -to sdram_dqmh_n
+#
+
+# LEDs en placa anexa
+set_location_assignment PIN_C7 -to testled1
+
+# Flash
+
+# Puerto serie
+
+# SDCard
+# set_location_assignment PIN_E22 -to sd_clk
+# set_location_assignment PIN_D22 -to sd_cs_n
+# set_location_assignment PIN_E21 -to sd_miso
+# set_location_assignment PIN_D21 -to sd_mosi
+
+# Joysticks
+# set_location_assignment PIN_A20 -to JOY_CLK
+# set_location_assignment PIN_B20 -to JOY_LOAD
+# set_location_assignment PIN_B19 -to JOY_DATA
+# set_location_assignment PIN_AA18 -to joyP7_o
+
+# SRAM
+# set_location_assignment  SRAM deleted
+# set_location_assignment PIN_AA20 -to sram_oe_n
+
+#
+set_location_assignment PIN_H21 -to stm_rst_o
+
+
+# set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to sd_mosi
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JOY_DATA
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to JOY_LOAD
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to joyP7_o
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_clk
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_cs_n
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_miso
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_mosi
+# set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sram_  DELETED
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to audio_out_left
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to audio_out_right
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to b[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to b[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to b[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk50mhz
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clkps2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dataps2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to g[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to g[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to g[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to hsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to mouseclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to mousedata
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to r[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to r[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to r[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_addr[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_ba[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_ba[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_cas_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_cke
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_cs_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dq[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dqmh_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_dqml_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_ras_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdram_we_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to testled1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vsync
+
+
+set_global_assignment -name VERILOG_FILE relojes.v
+set_global_assignment -name VERILOG_FILE ../common/video_processor.v
+set_global_assignment -name VERILOG_FILE ../common/vga_scandoubler.v
+set_global_assignment -name VERILOG_FILE ../common/sync_generator_pal_ntsc.v
+set_global_assignment -name VERILOG_FILE ../common/switch_mode.v
+set_global_assignment -name VERILOG_FILE ../common/sdramtest.v
+set_global_assignment -name VERILOG_FILE ../common/sdram_controller.v
+set_global_assignment -name VERILOG_FILE ../common/ps2_port.v
+
+set_global_assignment -name VHDL_FILE ../common/dac_if.vhd
+set_global_assignment -name VHDL_FILE ../common/audio_top.vhd
+set_global_assignment -name VERILOG_FILE ../common/spi.v
+set_global_assignment -name VERILOG_FILE ../common/mousetest.v
+set_global_assignment -name VERILOG_FILE ../common/flashtest.v
+set_global_assignment -name VERILOG_FILE ../common/audio_test.v
+
+# set_global_assignment -name VERILOG_FILE ../common/joystick_Sega_6_buttons.v
+# set_global_assignment -name VHDL_FILE ../common/joystick_Sega_6_buttons.vhd
+# set_global_assignment -name VERILOG_FILE ../common/joydecoder.v
+# set_global_assignment -name VERILOG_FILE ../common/ramtest.v
+# set_global_assignment -name VERILOG_FILE ../common/sdtest.v
+
+###################################
+
+
+
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
