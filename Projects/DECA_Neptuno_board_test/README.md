@@ -16,3 +16,8 @@ Includes:
  - VGA / RGB PAL & NTSC test
  - Keyboard & mouse tests
 
+Main changes to the core:
+
+* Pin definitions
+* [VGA 666 to 333](vga666-333.md)
+
