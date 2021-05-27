@@ -8,7 +8,7 @@ Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](
 
 Includes:
 
- - Onboard SDRAM test
+ - SDRAM test
  - ~~Addon SRAM test (1024x16)~~
  - ~~SD slot test~~
  - ~~Joystick 1 & 2 test (2 buttons for now)~~
