@@ -145,11 +145,31 @@ set_location_assignment PIN_C7 -to testled1
 
 # Puerto serie
 
-# SDCard
-# set_location_assignment PIN_E22 -to sd_clk
-# set_location_assignment PIN_D22 -to sd_cs_n
-# set_location_assignment PIN_E21 -to sd_miso
-# set_location_assignment PIN_D21 -to sd_mosi
+
+# MicroSD Card
+set_location_assignment PIN_T20 -to sd_clk
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_clk
+set_location_assignment PIN_T21 -to sd_mosi
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_mosi
+set_location_assignment PIN_U22 -to SD_CMD_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_CMD_DIR
+set_location_assignment PIN_T22 -to SD_D0_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_D0_DIR
+set_location_assignment PIN_U21 -to SD_D123_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_D123_DIR
+set_location_assignment PIN_R18 -to sd_miso
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_miso
+# set_location_assignment PIN_T18 -to SD_DAT1		## NC	## SD_DAT[1]
+# set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_DAT1	
+# set_location_assignment PIN_T19 -to SD_DAT2		## NC	## SD_DAT[2]
+# set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_DAT2
+set_location_assignment PIN_R20 -to sd_cs_n
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_cs_n
+# set_location_assignment PIN_R22 -to SD_FB_CLK		## NOT USED
+# set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_FB_CLK
+set_location_assignment PIN_P13 -to SD_SEL
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_SEL
+
 
 # Joysticks
 # set_location_assignment PIN_A20 -to JOY_CLK
@@ -235,6 +255,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to testled1
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vsync
 
 
+set_global_assignment -name SDC_FILE tld_test_placa_deca_neptuno.sdc
 set_global_assignment -name VERILOG_FILE relojes.v
 set_global_assignment -name VERILOG_FILE ../common/video_processor.v
 set_global_assignment -name VERILOG_FILE ../common/vga_scandoubler.v
@@ -243,19 +264,19 @@ set_global_assignment -name VERILOG_FILE ../common/switch_mode.v
 set_global_assignment -name VERILOG_FILE ../common/sdramtest.v
 set_global_assignment -name VERILOG_FILE ../common/sdram_controller.v
 set_global_assignment -name VERILOG_FILE ../common/ps2_port.v
-
 set_global_assignment -name VHDL_FILE ../common/dac_if.vhd
 set_global_assignment -name VHDL_FILE ../common/audio_top.vhd
 set_global_assignment -name VERILOG_FILE ../common/spi.v
 set_global_assignment -name VERILOG_FILE ../common/mousetest.v
 set_global_assignment -name VERILOG_FILE ../common/flashtest.v
 set_global_assignment -name VERILOG_FILE ../common/audio_test.v
+set_global_assignment -name VERILOG_FILE ../common/sdtest.v
 
 # set_global_assignment -name VERILOG_FILE ../common/joystick_Sega_6_buttons.v
 # set_global_assignment -name VHDL_FILE ../common/joystick_Sega_6_buttons.vhd
 # set_global_assignment -name VERILOG_FILE ../common/joydecoder.v
 # set_global_assignment -name VERILOG_FILE ../common/ramtest.v
-# set_global_assignment -name VERILOG_FILE ../common/sdtest.v
+
 
 ###################################
 
@@ -265,5 +286,11 @@ set_global_assignment -name VERILOG_FILE ../common/audio_test.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+
+
+
+
+
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

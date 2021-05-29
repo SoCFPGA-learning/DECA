@@ -38,12 +38,15 @@ module tld_test_placa_deca_neptuno (
   //output wire ser_tx,
   //output wire ser_rx,
   //---------------------------
-  /*
-  output wire sd_cs_n,
-  output wire sd_clk,
-  output wire sd_mosi,
-  input wire sd_miso,
-  */
+  // MicroSD Card 
+  input         sd_miso,
+  output        sd_mosi,
+  output        sd_clk,
+  output        sd_cs_n,
+  output	SD_SEL,
+  output	SD_CMD_DIR,
+  output	SD_D0_DIR,
+  output	SD_D123_DIR,
   //---------------------------
   
   /*
@@ -54,7 +57,8 @@ module tld_test_placa_deca_neptuno (
   output wire sram_lb_n,
   output wire sram_oe_n,
   */
-  /*
+  
+  /*   usa desplazadores
   output wire JOY_CLK,
   output wire JOY_LOAD,
   input  wire JOY_DATA,
@@ -94,6 +98,13 @@ module tld_test_placa_deca_neptuno (
   assign sram_addr[20] = 1'b0;
   assign sram_oe_n = ~memtest_progress;
 */
+
+  // MicroSD Card 
+  assign SD_SEL = 1'b0;   //0 = 3.3V at sdcard		
+  assign SD_CMD_DIR = 1'b1;  // MOSI FPGA output	
+  assign SD_D0_DIR = 1'b0;   // MISO FPGA input	
+  assign SD_D123_DIR = 1'b1; // CS FPGA output	
+  // 
 
   wire [5:0] r_out;
   wire [5:0] g_out;
@@ -138,11 +149,11 @@ module tld_test_placa_deca_neptuno (
    wire joy2fire1;
    wire joy2fire2;
    wire joy2start;
-	*/
+*/
 
 	//assign joyP7_o = 1'b1;
 	
-  /*
+/*
 	wire [11:0] joy1_o;
 	wire [11:0] joy2_o;
 	wire clk_joy;
@@ -158,9 +169,8 @@ module tld_test_placa_deca_neptuno (
    .locked(clocks_ready)
    );
 
-	
-// Llamamos a la instancia de los Joysticks
 /*
+// Llamamos a la instancia de los Joysticks
 	joydecoder los_joysticks (
       .clk(clk50mhz),
       .joy_data(JOY_DATA),
@@ -182,6 +192,7 @@ module tld_test_placa_deca_neptuno (
    );
 	// assign joyP7_o = 1'bz;
 */
+
 /*
 // PARA 6 BOTONES
 // Llamamos a la maquina de estados para leer los 6 botones del mando de Megadrive
@@ -212,17 +223,17 @@ module tld_test_placa_deca_neptuno (
     .dataps2(dataps2),
     .mode(mode),
     .vga(vga),
-   /* .sdtest(sdtest_init),    */
+    .sdtest(sdtest_init),    
     //.flashtest(flashtest_init),
     .mousetest(mousetest_init),
     .sdramtest(sdramtest_init),
-	 .memtestf(memtest_init_fast),
-	 .memtests(memtest_init_slow),
+    .memtestf(memtest_init_fast),
+    .memtests(memtest_init_slow),
     //.serialtest(),
     .hidetextwindow(hidetextwindow)
   );
 
-/*
+  /*
   ramtest test_de_ram (
     .clk(clk100),
     .hold(~clocks_ready),
@@ -236,7 +247,7 @@ module tld_test_placa_deca_neptuno (
   );
   */
 
-  /*
+  
   sdtest test_slot_sd (
     .clk(clk7),
     .rst(sdtest_init),
@@ -247,7 +258,7 @@ module tld_test_placa_deca_neptuno (
     .test_in_progress(sdtest_progress),
     .test_result(sdtest_result)
   );
-*/
+
 
   mousetest test_raton (
     .clk(clk7),
@@ -282,14 +293,13 @@ module tld_test_placa_deca_neptuno (
     .mode(mode),
     .vga(vga),
 
-	 /*
-	 // PARA 6 BOTONES
-	 // joystick1 format -- MXYZ SA UDLR BC       joy1_o [11:0] -- MXYZ SACB RLDU	 
-	 .joystick1(~{joy1_o[11], joy1_o[10],joy1_o[9],joy1_o[8],joy1_o[7],joy1_o[6],joy1_o[3],joy1_o[2],joy1_o[1],joy1_o[0],joy1_o[4],joy1_o[5]}),
-	 // joystick2 format -- MXYZ SA UDLR BC       joy2_o [11:0] -- MXYZ SACB RLDU 
-	 .joystick2(~{joy2_o[11], joy2_o[10],joy2_o[9],joy2_o[8],joy2_o[7],joy2_o[6],joy2_o[3],joy2_o[2],joy2_o[1],joy2_o[0],joy2_o[4],joy2_o[5]}),  
-
-	 //.joystick1({joy1up,joy1down,joy1left,joy1right,joy1fire1,joy1fire2}),
+/*
+    // PARA 6 BOTONES
+    // joystick1 format -- MXYZ SA UDLR BC       joy1_o [11:0] -- MXYZ SACB RLDU	 
+    .joystick1(~{joy1_o[11], joy1_o[10],joy1_o[9],joy1_o[8],joy1_o[7],joy1_o[6],joy1_o[3],joy1_o[2],joy1_o[1],joy1_o[0],joy1_o[4],joy1_o[5]}),
+    // joystick2 format -- MXYZ SA UDLR BC       joy2_o [11:0] -- MXYZ SACB RLDU 
+    .joystick2(~{joy2_o[11], joy2_o[10],joy2_o[9],joy2_o[8],joy2_o[7],joy2_o[6],joy2_o[3],joy2_o[2],joy2_o[1],joy2_o[0],joy2_o[4],joy2_o[5]}),  
+    //.joystick1({joy1up,joy1down,joy1left,joy1right,joy1fire1,joy1fire2}),
     //.joystick2({joy2up,joy2down,joy2left,joy2right,joy2fire1,joy2fire2}),
 */
     .memtest_progress(memtest_progress),
@@ -330,7 +340,6 @@ module tld_test_placa_deca_neptuno (
     .vsync(vsync)
   );
 
-  
   audio_test audio (
     .clk(clk14),
     .clk50mhz(clk50mhz),

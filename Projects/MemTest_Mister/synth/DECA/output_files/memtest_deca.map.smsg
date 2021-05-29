@@ -1,0 +1,2 @@
+Warning (10273): Verilog HDL warning at sdram.v(134): extended using "x" or "z" File: /home/jordi/Documents/Coding/FPGA/Deca_17/MemTest_Mister/src/sdram.v Line: 134
+Info (10281): Verilog HDL Declaration information at memtest_deca.sv(127): object "RESET" differs only in case from object "reset" in the same scope File: /home/jordi/Documents/Coding/FPGA/Deca_17/MemTest_Mister/synth/DECA/memtest_deca.sv Line: 127

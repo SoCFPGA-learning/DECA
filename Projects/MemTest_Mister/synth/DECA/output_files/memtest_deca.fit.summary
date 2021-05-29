@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sat May 29 12:51:57 2021
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : memtest_deca
+Top-level Entity Name : memtest_deca
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 1,287 / 49,760 ( 3 % )
+    Total combinational functions : 1,137 / 49,760 ( 2 % )
+    Dedicated logic registers : 835 / 49,760 ( 2 % )
+Total registers : 906
+Total pins : 59 / 360 ( 16 % )
+Total virtual pins : 0
+Total memory bits : 2,960 / 1,677,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 2 / 4 ( 50 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

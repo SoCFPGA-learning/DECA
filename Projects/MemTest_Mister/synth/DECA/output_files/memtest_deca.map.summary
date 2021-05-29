@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sat May 29 12:51:33 2021
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : memtest_deca
+Top-level Entity Name : memtest_deca
+Family : MAX 10
+Total logic elements : 1,376
+    Total combinational functions : 1,134
+    Dedicated logic registers : 902
+Total registers : 904
+Total pins : 59
+Total virtual pins : 0
+Total memory bits : 2,960
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 2
+UFM blocks : 0
+ADC blocks : 0
