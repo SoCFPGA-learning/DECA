@@ -43,7 +43,12 @@ module zx48
 	output wire       usdCs,
 	output wire       usdCk,
 	input  wire       usdMiso,
-	output wire       usdMosi
+	output wire       usdMosi,
+	output wire   		SD_SEL,
+	output wire		 	SD_CMD_DIR,
+	output wire		   SD_D0_DIR,
+	output wire		   SD_D123_DIR
+	
 );
 
 wire [23:0] rgb_out;
@@ -69,6 +74,13 @@ wire ne14M = power & ~cc[0] & ~cc[1];
 wire ne7M0 = power & ~cc[0] & ~cc[1] & ~cc[2];
 
 //-------------------------------------------------------------------------------------------------
+
+  // MicroSD Card 
+  assign SD_SEL = 1'b0;   //0 = 3.3V at sdcard		
+  assign SD_CMD_DIR = 1'b1;  // MOSI FPGA output	
+  assign SD_D0_DIR = 1'b0;   // MISO FPGA input	
+  assign SD_D123_DIR = 1'b1; // CS FPGA output	
+  // 
 
 wire[7:0] code;
 

@@ -8,9 +8,7 @@ Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](
 
 
 
-### STATUS: UNFINISHED    
 
-### Does not meet timing requeriments
 
 
 
