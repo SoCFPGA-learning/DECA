@@ -99,9 +99,9 @@ assign AUDIO_R = 0;
 wire [31:0] status;
 wire  [1:0] buttons;
 
-reg  [1:0] sdram_sz = 2'b11; //0 - no memory board detected   1 - 32 MB  2 - 64 MB  3 - 128 MB
+reg  [1:0] sdram_sz = 2'b01; //0 - no memory board detected   1 - 32 MB  2 - 64 MB  3 - 128 MB
 
-reg direct = 1'b1;
+reg direct = 1'b0;
 
 
 /*

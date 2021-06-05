@@ -10,11 +10,9 @@ Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](
 
 
 
-### STATUS: UNFINISHED    
+### Result of memtest:     Working at 167 MHz without errors
 
-### Does not meet timing requeriments
-
-I got very few passed test cycles even at 70 MHz.
+![realtest](realtest.png)
 
 
 
