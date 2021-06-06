@@ -1,4 +1,4 @@
-# zx48, a Sinclair ZX Spectrum 48K FPGA implementation
+# zx48 DECA port
 
 Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48
 
@@ -36,4 +36,3 @@ Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
-
