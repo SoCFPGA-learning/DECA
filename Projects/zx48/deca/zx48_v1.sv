@@ -1,7 +1,6 @@
 /*
 Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48
 v1 video modified to work with VGA 333
-v2 changed to video from ZXuno port which is VGA 333
 */
 
 
@@ -52,6 +51,8 @@ module zx48
 	output wire		   SD_D123_DIR
 	
 );
+
+wire [23:0] rgb_out;
 
 //-------------------------------------------------------------------------------------------------
 
@@ -214,10 +215,13 @@ i2s I2S
 
 //-------------------------------------------------------------------------------------------------
 
-wire[8:0] irgb = blank ? 9'd0 : { r,i&r,r, g,i&g,g, b,i&b,b };
-wire[8:0] orgb;
+reg[23:0] palette[0:15];
+initial $readmemh("palette.hex", palette, 0);
 
-scandoubler #(.RGBW(9)) Scandoubler
+wire[23:0] irgb = blank ? 1'd0 : palette[{ i, r, g, b }];
+wire[23:0] orgb;
+
+scandoubler #(.RGBW(24)) Scandoubler
 (
 	.clock  (clock  ),
 	.ice    (ne7M0  ),
@@ -230,14 +234,31 @@ scandoubler #(.RGBW(9)) Scandoubler
 	.orgb   (orgb   )
 );
 
+
 reg vga = 1'b1;
+/*
+reg vga;
+reg scrlckd = 1'b1;
+
+always @(posedge clock) if(kstb)
+begin
+	scrlckd <= scrlck;
+	if(!scrlck && scrlckd) vga <= ~vga;
+end
+*/
 
 //-------------------------------------------------------------------------------------------------
 
 assign led = { ~usdCs, map };
 
+//wire pixce = vga ? ne28M : ne14M;
+//always @(posedge clock) if(pixce) pixck <= ~pixck;
+
+//assign pixbk = ~blank;
 assign sync = vga ? { ovsync, ohsync } : { 1'b1, ~(hsync^vsync) };
-assign rgb = vga ? orgb : irgb;
+assign rgb_out = vga ? orgb : irgb;
+
+assign rgb = {rgb_out[23:21],rgb_out[15:13],rgb_out[7:5]};
 
 
 //-------------------------------------------------------------------------------------------------
