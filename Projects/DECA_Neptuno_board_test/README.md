@@ -37,3 +37,10 @@ Main changes to the core:
 
 
 
+Screen:
+
+![screen](screen.png)
+
+
+
+Note: SDRAM test is not stable. Sometimes is Ok others gives error.

@@ -122,15 +122,16 @@ set_location_assignment PIN_W13 -to DRAM_DQMH
 # Video
 set_location_assignment PIN_W7 -to VGA_HS
 set_location_assignment PIN_W6 -to VGA_VS
-set_location_assignment PIN_AA7 -to VGA_B[2]
-set_location_assignment PIN_Y7 -to VGA_B[1]
-set_location_assignment PIN_U7 -to VGA_B[0]
-set_location_assignment PIN_AB8 -to VGA_G[2]
-set_location_assignment PIN_AB7 -to VGA_G[1]
-set_location_assignment PIN_R11 -to VGA_G[0]
-set_location_assignment PIN_AB6 -to VGA_R[2]
-set_location_assignment PIN_AA6 -to VGA_R[1]
-set_location_assignment PIN_V10 -to VGA_R[0]
+set_location_assignment PIN_AB6 -to VGA_B[2]
+set_location_assignment PIN_AA6 -to VGA_B[1]
+set_location_assignment PIN_V10 -to VGA_B[0]
+set_location_assignment PIN_V7 -to VGA_G[2]
+set_location_assignment PIN_R11 -to VGA_G[1]
+set_location_assignment PIN_AB7 -to VGA_G[0]
+set_location_assignment PIN_AA7 -to VGA_R[2]
+set_location_assignment PIN_Y7 -to VGA_R[1]
+set_location_assignment PIN_U7 -to VGA_R[0]
+
 
 #NEPTUNO TECLADO Y RATÓN#
 set_location_assignment PIN_Y5 -to ps2_clk_io
@@ -325,5 +326,10 @@ set_global_assignment -name CDF_FILE output_files/Chain3.cdf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+
+
+
+
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
