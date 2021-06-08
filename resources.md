@@ -16,6 +16,8 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
 * Video overview https://www.youtube.com/watch?v=8SaMVaniz8U
 
+* Porting cores to DECA board  https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores
+
   
 
 ### Documentation:
