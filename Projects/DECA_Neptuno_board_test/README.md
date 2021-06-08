@@ -33,7 +33,7 @@ PS2 mouse tested with Atlas (J5:9 MDAT pk, J5:10 MCLK gy, J5:11 GND bk, +5V USB 
 #### Main changes to the core
 
 * Pin definitions
-* [VGA 666 to 333](vga666-333.md)
+* [VGA 666 to 333](https://github.com/SoCFPGA-learning/DECA/blob/main/Tutorials/Porting-Cores/vga666-333.md)
 
 
 
