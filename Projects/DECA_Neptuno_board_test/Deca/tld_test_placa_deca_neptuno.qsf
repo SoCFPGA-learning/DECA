@@ -74,6 +74,7 @@ set_location_assignment PIN_AA7 -to r[2]
 set_location_assignment PIN_Y7 -to r[1]
 set_location_assignment PIN_U7 -to r[0]
 
+
 # Teclado (GPIO1_D0/1) y ratón (GPIO1_D16/17)
 set_location_assignment PIN_Y5 -to clkps2
 set_location_assignment PIN_Y6 -to dataps2
@@ -87,6 +88,17 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mousedata
 # Audio (GPIO1_D18/19)
 set_location_assignment PIN_R9 -to audio_out_left
 set_location_assignment PIN_W4 -to audio_out_right
+
+# EAR
+#set_location_assignment PIN_R9 -to ear
+
+# UDA 1334A  
+#NOT USED W18 P8:3, BCLK Y18 P8:4,  WSEL Y19 P8:5, DIN AA17 P8:6
+#set_location_assignment PIN_W18 -to i2sMck
+#set_location_assignment PIN_Y18 -to i2sSck
+#set_location_assignment PIN_Y19 -to i2sLr
+#set_location_assignment PIN_AA17 -to i2sD
+
 
 # SDRAM
 set_location_assignment PIN_Y17 -to sdram_addr[0]
@@ -288,6 +300,7 @@ set_global_assignment -name VERILOG_FILE ../common/sdtest.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
 
 
 

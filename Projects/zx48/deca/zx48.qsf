@@ -119,7 +119,7 @@ set_location_assignment PIN_AA6 -to rgb[1]
 set_location_assignment PIN_V10 -to rgb[0]
 
 set_location_assignment PIN_R9 -to ear
-
+# UDA 1334A  NOT USED W18 P8:3, BCLK Y18 P8:4,  WSEL Y19 P8:5, DIN AA17 P8:6
 set_location_assignment PIN_W18 -to i2sMck
 set_location_assignment PIN_Y18 -to i2sSck
 set_location_assignment PIN_Y19 -to i2sLr
