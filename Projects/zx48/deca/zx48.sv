@@ -2,6 +2,7 @@
 Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48
 v1 video modified to work with VGA 333
 v2 changed to video from ZXuno port which is VGA 333
+v3 I2S Audio though DECA DAC TLV320AIC3254
 */
 
 
@@ -13,17 +14,27 @@ module zx48
 
 	output wire[ 1:0] led,
 
-//	output reg        pixck,
-//	output wire       pixbk,
+	//debug
+	output wire 	debugled,
+	//input wire		KEY0,
+
 	output wire[ 1:0] sync,
 	output wire[8:0] rgb,
 
-	input  wire       ear,
+	output wire       i2sMck,	//AUDIO_MCLK
+	output wire       i2sSck,	//AUDIO_BCLK
+	output wire       i2sLr,	//AUDIO_WCLK
+	output wire       i2sD,		//AUDIO_DIN_MFP1
 
-	output wire       i2sMck,
-	output wire       i2sSck,
-	output wire       i2sLr,
-	output wire       i2sD,
+	input  wire       ear,		//AUDIO_DOUT_MFP2
+	// Audio DAC DECA
+	inout wire 		AUDIO_GPIO_MFP5,
+	input wire 		AUDIO_MISO_MFP4,
+	inout wire 		AUDIO_RESET_n,
+	output wire 	AUDIO_SCLK_MFP3,
+	output wire 	AUDIO_SCL_SS_n,
+	inout wire 		AUDIO_SDA_MOSI,
+	output wire 	AUDIO_SPI_SELECT,
 
 	inout  wire       keybCk,
 	inout  wire       keybDQ,
@@ -46,10 +57,11 @@ module zx48
 	output wire       usdCk,
 	input  wire       usdMiso,
 	output wire       usdMosi,
-	output wire   		SD_SEL,
-	output wire		 	SD_CMD_DIR,
-	output wire		   SD_D0_DIR,
-	output wire		   SD_D123_DIR
+	// SD DECA
+	output wire   	SD_SEL,
+	output wire		SD_CMD_DIR,
+	output wire		SD_D0_DIR,
+	output wire		SD_D123_DIR
 	
 );
 
@@ -76,7 +88,7 @@ wire ne7M0 = power & ~cc[0] & ~cc[1] & ~cc[2];
 //-------------------------------------------------------------------------------------------------
 
   // MicroSD Card 
-  assign SD_SEL = 1'b0;   //0 = 3.3V at sdcard		
+  assign SD_SEL = 1'b0;   //0 = 3.3V at sdcard	
   assign SD_CMD_DIR = 1'b1;  // MOSI FPGA output	
   assign SD_D0_DIR = 1'b0;   // MISO FPGA input	
   assign SD_D123_DIR = 1'b1; // CS FPGA output	
@@ -197,6 +209,41 @@ assign sdramCk = clock;
 assign sdramCe = 1'b1;
 
 //-------------------------------------------------------------------------------------------------
+	//--RESET DELAY ---
+   reg RESET_DELAY_n;
+	reg   [31:0]  DELAY_CNT;   
+   assign debugled = RESET_DELAY_n;
+
+	always @(negedge reset ) begin 
+	if ( reset )  begin 
+			RESET_DELAY_n <= 0;
+			DELAY_CNT   <= 0;
+		end 
+	else  begin 
+			if ( DELAY_CNT < 32'hfffff  )  
+				DELAY_CNT <= DELAY_CNT+1; 
+			else 
+				RESET_DELAY_n <= 1;
+		end
+	end
+
+    // Audio DAC DECA Output assignments
+    assign AUDIO_GPIO_MFP5  = 1;  // GPIO
+    assign AUDIO_SPI_SELECT = 1;  // SPI mode
+    assign AUDIO_RESET_n    = RESET_DELAY_n;    //rst_delayed_n
+
+    // AUDIO CODEC SPI CONFIG
+    // I2S mode; fs = 48khz; MCLK = 24.567MhZ x 2
+    AUDIO_SPI_CTL_RD u1 (
+        .iRESET_n(RESET_DELAY_n), //rst_delayed_n
+        .iCLK_50(clock50),		  //50Mhz clock
+        .oCS_n(AUDIO_SCL_SS_n),   //SPI interface mode chip-select signal
+        .oSCLK(AUDIO_SCLK_MFP3),  //SPI serial clock
+        .oDIN(AUDIO_SDA_MOSI),    //SPI Serial data output
+        .iDOUT(AUDIO_MISO_MFP4)   //SPI serial data input
+    );
+    
+//-------------------------------------------------------------------------------------------------
 
 wire[15:0] ldata = { 1'b0, laudio, 2'b00 };
 wire[15:0] rdata = { 1'b0, raudio, 2'b00 };
@@ -239,7 +286,4 @@ assign led = { ~usdCs, map };
 assign sync = vga ? { ovsync, ohsync } : { 1'b1, ~(hsync^vsync) };
 assign rgb = vga ? orgb : irgb;
 
-
-//-------------------------------------------------------------------------------------------------
 endmodule
-//-------------------------------------------------------------------------------------------------

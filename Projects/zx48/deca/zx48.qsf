@@ -94,12 +94,20 @@ set_global_assignment -name SDC_FILE zx48.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE zx48.sv
 set_global_assignment -name QIP_FILE clock.qip
 
+set_global_assignment -name VERILOG_FILE AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE SPI_RAM.v
+
 # Pin & Location Assignments
 # ==========================
 set_location_assignment PIN_M8 -to clock50
 
 set_location_assignment PIN_C8 -to led[1]
 set_location_assignment PIN_C7 -to led[0]
+
+# debug led 7, KEY0
+set_location_assignment PIN_C5 -to debugled
+set_location_assignment PIN_H21 -to KEY0
+
 
 #set_location_assignment PIN_U22 -to pixck
 #set_location_assignment PIN_V22 -to pixbk
@@ -118,12 +126,46 @@ set_location_assignment PIN_AB6 -to rgb[2]
 set_location_assignment PIN_AA6 -to rgb[1]
 set_location_assignment PIN_V10 -to rgb[0]
 
-set_location_assignment PIN_R9 -to ear
+#set_location_assignment PIN_R9 -to ear
 # UDA 1334A  NOT USED W18 P8:3, BCLK Y18 P8:4,  WSEL Y19 P8:5, DIN AA17 P8:6
-set_location_assignment PIN_W18 -to i2sMck
-set_location_assignment PIN_Y18 -to i2sSck
-set_location_assignment PIN_Y19 -to i2sLr
-set_location_assignment PIN_AA17 -to i2sD
+#set_location_assignment PIN_W18 -to i2sMck
+#set_location_assignment PIN_Y18 -to i2sSck
+#set_location_assignment PIN_Y19 -to i2sLr
+#set_location_assignment PIN_AA17 -to i2sD
+
+#============================================================
+# Audio    DECA DAC TLV320AIC3254
+#============================================================
+# PIN_R14 -to AUDIO_BCLK  i2sSck
+# PIN_P15 -to AUDIO_DIN_MFP1  i2sD
+# PIN_P18 -to AUDIO_DOUT_MFP2  ear
+# PIN_P14 -to AUDIO_MCLK  i2sMck
+# PIN_R15 -to AUDIO_WCLK  i2sLr
+set_location_assignment PIN_R14 -to i2sSck
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sSck
+set_location_assignment PIN_P15 -to i2sD
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sD
+set_location_assignment PIN_P18 -to ear
+set_instance_assignment -name IO_STANDARD "1.5 V" -to ear
+set_location_assignment PIN_M22 -to AUDIO_GPIO_MFP5
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_GPIO_MFP5
+set_location_assignment PIN_P14 -to i2sMck
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sMck
+set_location_assignment PIN_N21 -to AUDIO_MISO_MFP4
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_MISO_MFP4
+set_location_assignment PIN_M21 -to AUDIO_RESET_n
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_RESET_n
+set_location_assignment PIN_P19 -to AUDIO_SCLK_MFP3
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SCLK_MFP3
+set_location_assignment PIN_P20 -to AUDIO_SCL_SS_n
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SCL_SS_n
+set_location_assignment PIN_P21 -to AUDIO_SDA_MOSI
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SDA_MOSI
+set_location_assignment PIN_N22 -to AUDIO_SPI_SELECT
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SPI_SELECT
+set_location_assignment PIN_R15 -to i2sLr
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sLr
+
 
 set_location_assignment PIN_Y6 -to keybDQ
 set_location_assignment PIN_Y5 -to keybCk
@@ -224,6 +266,8 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybDQ
 set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybCk
 set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseDQ
 set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseCk
+
+#----------------------------------------------------------------------------------
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
