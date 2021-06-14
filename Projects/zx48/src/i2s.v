@@ -28,7 +28,10 @@ end
 //-------------------------------------------------------------------------------------------------
 
 reg[15:0] sr;
-always @(negedge sck) if(lload) sr <= ldata; else if(rload) sr <= rdata; else sr <= { sr[14:0], 1'b0 };
+always @(negedge sck) 
+	if(lload) sr <= ldata; 
+	else if(rload) sr <= rdata; 
+	else sr <= { sr[14:0], 1'b0 };
 
 //-------------------------------------------------------------------------------------------------
 
