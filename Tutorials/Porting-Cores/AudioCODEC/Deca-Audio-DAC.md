@@ -71,12 +71,12 @@ Add missing ports to top module. You should already have the I2S (+ ear if avail
 
 ```verilog
 	// Audio DAC DECA
-	inout wire 		AUDIO_GPIO_MFP5,
-	input wire 		AUDIO_MISO_MFP4,
-	inout wire 		AUDIO_RESET_n,
+	inout wire 	AUDIO_GPIO_MFP5,
+	input wire 	AUDIO_MISO_MFP4,
+	inout wire 	AUDIO_RESET_n,
 	output wire 	AUDIO_SCLK_MFP3,
 	output wire 	AUDIO_SCL_SS_n,
-	inout wire 		AUDIO_SDA_MOSI,
+	inout wire 	AUDIO_SDA_MOSI,
 	output wire 	AUDIO_SPI_SELECT,
 ```
 
@@ -109,7 +109,7 @@ In the module code add & adapt this code with your own "reset" signal and "clock
     // I2S mode; fs = 48khz; MCLK = 24.567MhZ x 2
     AUDIO_SPI_CTL_RD u1 (
         .iRESET_n(RESET_DELAY_n), 
-        .iCLK_50(clock50),		  //50Mhz clock
+        .iCLK_50(clock50),	//50Mhz clock
         .oCS_n(AUDIO_SCL_SS_n),   //SPI interface mode chip-select signal
         .oSCLK(AUDIO_SCLK_MFP3),  //SPI serial clock
         .oDIN(AUDIO_SDA_MOSI),    //SPI Serial data output
