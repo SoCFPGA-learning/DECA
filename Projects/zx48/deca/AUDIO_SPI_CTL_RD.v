@@ -1,22 +1,21 @@
 module AUDIO_SPI_CTL_RD(
- input         iRESET_n,
- input		iCLK_50,
- output	oDIN,
+ input  iRESET_n,
+ input	iCLK_50,
  output	oCS_n,
  output	oSCLK,
- input		iDOUT,
- output	[7:0] oDATA8,
-
- output reg  [7:0]   ST,
- output reg  [7:0]   COUNTER ,
- output reg  [15:0]  W_REG_DATA,
- output reg  [15:0]  W_REG_DATA_T,
- output reg  [15:0]  W_REG_DATA_R,
- output reg  [15:0]  READ_DATA,
- output reg  [7:0]   WORD_CNT,
- output reg          W_R,
- output reg [1:0]    OK2
+ output	oDIN,
+ input	iDOUT
 );
+
+ reg  [7:0]   ST;
+ reg  [7:0]   COUNTER;
+ reg  [15:0]  W_REG_DATA;
+ reg  [15:0]  W_REG_DATA_T;
+ reg  [15:0]  W_REG_DATA_R;
+ reg  [15:0]  READ_DATA;
+ reg  [7:0]   WORD_CNT;
+ reg          W_R;
+ reg [1:0]    OK2;
 
 //== ASSIGN TO OUTPUT ===
 assign  RESET_n = iRESET_n  ; 
@@ -49,21 +48,6 @@ if  ( CLK_DELAY  > 62  )   // 25= 1M clock  / 62 =400k
 	end
 	else CLK_DELAY <= CLK_DELAY + 1;
 end
-
-/*
-//===RESET-DELAY ===
-reg [31:0]RESET_DELAY ;
-	always @(negedge RESET_n  or posedge  CLK_1M )  begin 
-	if ( !RESET_n ) RESET_DELAY  <= 0; 
-	else begin 
-	    if ( RESET_DELAY < 1000000 ) RESET_DELAY <=RESET_DELAY+1; 
-		 else RESET_DELAY<=RESET_DELAY ; 
-	end 
-end
-
-wire   ST_RESET  ;
-assign ST_RESET = ( RESET_DELAY == 100000/2)?0:1 ; 
-*/
 
 //==== SPI ST === // 
 always@( negedge RESET_n or posedge CLK_1M )begin

@@ -8,24 +8,24 @@
 * Mist
 * Mister
 
-### Neptuno FPGA
+### Porting from Neptuno FPGA
 
 Porting from [Neptuno FPGA](https://github.com/neptuno-fpga/) platform is pretty easy:
 
 * Change FPGA target to Arrow DECA Max10
-* Adapt FPGA pinout in .qsf file.  [Check this template.](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/DECA_Neptuno_board_test/Deca/tld_test_placa_deca_neptuno.qsf)
+* Adapt FPGA pinout in .qsf file ([check this template)](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/DECA_Neptuno_board_test/Deca/tld_test_placa_deca_neptuno.qsf)
 * No need to adapt clocks
 * Adapt Video & Audio  (see below)
-* Most cores use 32 MB SDRAM, the same kind of memory used by Mister ([see hack to connect it to DECA board)](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca)
+* Most cores use 32 MB SDRAM of the same kind of memory used by Mister modules ([see hack to connect it to DECA board)](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca)
 * Add pins to control SD card level shifter (see below)
 
 
 
-### Audio
+### Audio through Line out 3.5 jack
 
-To be defined.
+* [Using DECA's integrated TLV320AIC3254 Audio DAC](AudioCODEC/Deca-Audio-DAC.md)
 
-### Video. HDMI
+### Video & Audio through HDMI
 
 To be defined.
 
@@ -33,7 +33,7 @@ To be defined.
 
 Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
-* [VGA conversion from 666 to 333](vga666-333.md)
+* [VGA conversion from 666 to 333](VGA333/vga666-333.md)
 
 ### SD card 
 

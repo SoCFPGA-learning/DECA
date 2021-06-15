@@ -134,13 +134,13 @@ set_location_assignment PIN_V10 -to rgb[0]
 #set_location_assignment PIN_AA17 -to i2sD
 
 #============================================================
-# Audio    DECA DAC TLV320AIC3254
+# Audio CODEC TLV320AIC3254
 #============================================================
-# PIN_R14 -to AUDIO_BCLK  i2sSck
-# PIN_P15 -to AUDIO_DIN_MFP1  i2sD
-# PIN_P18 -to AUDIO_DOUT_MFP2  ear
-# PIN_P14 -to AUDIO_MCLK  i2sMck
-# PIN_R15 -to AUDIO_WCLK  i2sLr
+# PIN_R14  AUDIO_BCLK  i2sSck
+# PIN_P15  AUDIO_DIN_MFP1  i2sD
+# PIN_P18  AUDIO_DOUT_MFP2  ear
+# PIN_P14  AUDIO_MCLK  i2sMck
+# PIN_R15  AUDIO_WCLK  i2sLr
 set_location_assignment PIN_R14 -to i2sSck
 set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sSck
 set_location_assignment PIN_P15 -to i2sD

@@ -211,7 +211,7 @@ assign sdramCe = 1'b1;
 //-------------------------------------------------------------------------------------------------
 	//--RESET DELAY ---
    reg RESET_DELAY_n;
-	reg   [31:0]  DELAY_CNT;   
+   reg   [31:0]  DELAY_CNT;   
    assign debugled = RESET_DELAY_n;
 
 	always @(negedge reset ) begin 
@@ -230,12 +230,12 @@ assign sdramCe = 1'b1;
     // Audio DAC DECA Output assignments
     assign AUDIO_GPIO_MFP5  = 1;  // GPIO
     assign AUDIO_SPI_SELECT = 1;  // SPI mode
-    assign AUDIO_RESET_n    = RESET_DELAY_n;    //rst_delayed_n
+    assign AUDIO_RESET_n    = RESET_DELAY_n;   
 
     // AUDIO CODEC SPI CONFIG
     // I2S mode; fs = 48khz; MCLK = 24.567MhZ x 2
     AUDIO_SPI_CTL_RD u1 (
-        .iRESET_n(RESET_DELAY_n), //rst_delayed_n
+        .iRESET_n(RESET_DELAY_n), 
         .iCLK_50(clock50),		  //50Mhz clock
         .oCS_n(AUDIO_SCL_SS_n),   //SPI interface mode chip-select signal
         .oSCLK(AUDIO_SCLK_MFP3),  //SPI serial clock
