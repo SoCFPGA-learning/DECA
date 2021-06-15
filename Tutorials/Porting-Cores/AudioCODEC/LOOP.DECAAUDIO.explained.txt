@@ -1,10 +1,11 @@
+[AUDIO] AUDIO_Loopback_Configuration...      [Gets Audio from Line In and the plays it back in loopback]
 
 Extracted from DECA Terasic Resource CD
 Folder   Demonstrations/DECA_Audio/software/DECA_Audio
 File	AUDIO.c
 
+See Register description in TLV320AIC3254 Application Reference Guide 
 
-[AUDIO] AUDIO_Loopback_Configuration...      [Gets Audio from Line In and the plays it back in loopback]
 
 //page0 reg configration
 
