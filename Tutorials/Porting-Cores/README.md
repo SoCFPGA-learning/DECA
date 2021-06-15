@@ -23,7 +23,7 @@ Porting from [Neptuno FPGA](https://github.com/neptuno-fpga/) platform is pretty
 
 ### Audio through Line out 3.5 jack
 
-* [Using DECA's integrated TLV320AIC3254 Audio DAC](AudioCODEC/Deca-Audio-DAC.md)
+* [Using DECA's integrated TLV320AIC3254 Audio DAC](AudioCODEC/README.md)
 
 ### Video & Audio through HDMI
 
@@ -33,7 +33,7 @@ To be defined.
 
 Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
-* [VGA conversion from 666 to 333](VGA333/vga666-333.md)
+* [VGA conversion from 666 to 333](VGA333/README.md)
 
 ### SD card 
 
