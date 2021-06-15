@@ -2,7 +2,7 @@
 
 Check folders above which contain different tutorials.
 
-* Porting cores to DECA board
+* [Porting cores to DECA board](Porting-Cores/README.md)
 
   
 
