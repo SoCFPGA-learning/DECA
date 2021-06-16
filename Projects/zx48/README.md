@@ -10,6 +10,14 @@ Audio works though line out 3.5 jack connector.
 
 ![screen](screen.png)
 
+Missing features:
+
+* Ear
+
+* HDMI Audio & Video output
+
+  
+
 Follows original readme.md.
 
 
@@ -40,3 +48,4 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
+
