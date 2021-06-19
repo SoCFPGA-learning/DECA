@@ -15,10 +15,9 @@ FPGA is listed in Table 3-10.
 ### Resources
 
 * [TLV320AIC3254_datasheet.pdf](datasheets/TLV320AIC3254_datasheet.pdf) 
-
 * [slaa408a_Reference_Guide.pdf](datasheets/slaa408a_Reference_Guide.pdf) 
-
 * [slaa404c_App_Report.pdf](datasheets/slaa404c_App_Report.pdf) 
+* [HEX file format](https://www.intel.com/content/www/us/en/programmable/quartushelp/13.0/mergedProjects/reference/glossary/def_hexfile.htm)
 
 ### Register configurations
 
