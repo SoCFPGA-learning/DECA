@@ -19,7 +19,11 @@ Porting from [Neptuno FPGA](https://github.com/neptuno-fpga/) platform is pretty
 * Most cores use 32 MB SDRAM of the same kind of memory used by Mister modules ([see hack to connect it to DECA board)](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca)
 * Add pins to control SD card level shifter (see below)
 
+If the core does not work try:
 
+* Regenerate all IPs for the Max10 family
+
+  
 
 ### Audio through Line out 3.5 jack
 
@@ -60,3 +64,24 @@ Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
   ```
 
   
+
+
+
+## Tips
+
+* Search for a module or signal name in the project code folder
+
+  ```sh
+  grep -Rl "module_name" ./
+  ```
+
+* If a signal uses PLL and wan't to reduce/increase frequency, don't use a direct clock, use PLL. 
+
+  
+
+## Troubleshooting
+
+* ALTDDIO_OUT  does not work, change it for "Altera GPIO Lite IP Core"
+
+  Direct instantiation of the ALTDDIO_OUT primitive does not seem to work reliably on the chosen FPGA and/or tool chain (MAX 10). The solution is to generate an IP core with the MegaWizard GPIO Lite Intel FPGA IP using a DDR register output.
+
