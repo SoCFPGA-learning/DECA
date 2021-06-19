@@ -129,13 +129,24 @@ module Next186_SoC(
         .iDOUT(AUDIO_MISO_MFP4)   //SPI serial data input
     );
 
-	dd_buf sdrclk_buf
+	/*
+	dd_buf sdrclk_buf 	//ALTDDIO_OUT  does not work, change it for "Altera GPIO Lite IP Core"
 	(
 		.datain_h(1'b1),
 		.datain_l(1'b0),
 		.outclock(SDR_CLK),
 		.dataout(DRAM_CLK)
 	);
+	*/
+
+	dd_buf sdrclk_buf 	//Altera GPIO Lite IP Core with DDR register output
+	(
+		.din(2'b01),
+		.outclock(SDR_CLK),
+		.pad_out(DRAM_CLK)
+	);
+
+
 
 	system sys_inst
 	(
