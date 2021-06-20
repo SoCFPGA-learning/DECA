@@ -34,7 +34,7 @@ The following implementation uses SPI communication (Max10 master, AIC3254 slave
 
 The original code comes from "adc_mic" example from [Terasic's Max10 plus board resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1223&PartNo=4).
 
-**Add following files to main Quartus project folder**
+**Add following files to a folder named "audio" inside Quartus project folder**
 
 * [AUDIO_SPI_CTL_RD.v](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48/deca/AUDIO_SPI_CTL_RD.v) sends configuration registers and its data to the AIC3254
 
@@ -46,8 +46,8 @@ The original code comes from "adc_mic" example from [Terasic's Max10 plus board 
 * Add Verilog files:
 
 ```
-set_global_assignment -name VERILOG_FILE AUDIO_SPI_CTL_RD.v
-set_global_assignment -name VERILOG_FILE SPI_RAM.v
+set_global_assignment -name audio/VERILOG_FILE AUDIO_SPI_CTL_RD.v
+set_global_assignment -name audio/VERILOG_FILE SPI_RAM.v
 ```
 
 * Replace the I2S Pins from the ported core with the DECA ones:

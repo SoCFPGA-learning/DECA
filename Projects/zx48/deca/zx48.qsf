@@ -94,8 +94,8 @@ set_global_assignment -name SDC_FILE zx48.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE zx48.sv
 set_global_assignment -name QIP_FILE clock.qip
 
-set_global_assignment -name VERILOG_FILE AUDIO_SPI_CTL_RD.v
-set_global_assignment -name VERILOG_FILE SPI_RAM.v
+set_global_assignment -name VERILOG_FILE audio/AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE audio/SPI_RAM.v
 
 # Pin & Location Assignments
 # ==========================
@@ -272,6 +272,7 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseCk
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
 
 
 
