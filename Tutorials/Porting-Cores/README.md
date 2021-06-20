@@ -1,39 +1,23 @@
 # Porting cores to DECA board
 
-## Target cores
-
-* [Neptuno FPGA](https://github.com/neptuno-fpga/) 
-* DE10-Lite
-* [Multicore2](https://gitlab.com/victor.trucco/Multicore_Bitstreams) 
-* Mist
-* Mister
-
-### Porting from Neptuno FPGA
-
-Porting from [Neptuno FPGA](https://github.com/neptuno-fpga/) platform is pretty easy:
-
-* Change FPGA target to Arrow DECA Max10
-* Adapt FPGA pinout in .qsf file ([check this template)](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/DECA_Neptuno_board_test/Deca/tld_test_placa_deca_neptuno.qsf)
-* No need to adapt clocks
-* Adapt Video & Audio  (see below)
-* Most cores use 32 MB SDRAM of the same kind of memory used by Mister modules ([see hack to connect it to DECA board)](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca)
-* Add pins to control SD card level shifter (see below)
-
-If the core does not work try:
-
-* Regenerate all IPs for the Max10 family
-
-  
+See below for target cores and porting from Neptuno FPGA platform.
 
 ### Audio through Line out 3.5 jack
 
-* [Using DECA's integrated TLV320AIC3254 Audio DAC](AudioCODEC/README.md)
+* Using DECA's integrated TLV320AIC3254 Audio DAC https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/AudioCODEC
 
 ### Video & Audio through HDMI
 
 To be defined.
 
-### Video. Using an VGA adapter
+Some useful resources:
+
+* HDMI examples from Terasic CD
+* ADV7513-Based Video Generators application note https://www.analog.com/media/en/technical-documentation/application-notes/AN-1270.pdf
+* Test for video output using the ADV7513 chip on a de10 nano board  https://github.com/nhasbun/de10nano_vgaHdmi_chip.  Includes programing and reference guide for ADV7513 chip.
+* HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
+
+### Video using an VGA adapter
 
 Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
@@ -65,8 +49,6 @@ Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
   
 
-
-
 ## Tips
 
 * Search for a module or signal name in the project code folder
@@ -77,11 +59,43 @@ Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
 * If a signal uses PLL and wan't to reduce/increase frequency, don't use a direct clock, use PLL. 
 
-  
+* Regenerate all IPs for the Max10 family
+
 
 ## Troubleshooting
 
 * ALTDDIO_OUT  does not work, change it for "Altera GPIO Lite IP Core"
 
   Direct instantiation of the ALTDDIO_OUT primitive does not seem to work reliably on the chosen FPGA and/or tool chain (MAX 10). The solution is to generate an IP core with the MegaWizard GPIO Lite Intel FPGA IP using a DDR register output.
+
+
+
+
+
+## Target cores
+
+* [Neptuno FPGA](https://github.com/neptuno-fpga/) 
+
+* [Multicore2+](https://gitlab.com/victor.trucco/Multicore_Bitstreams) 
+
+* DE10-Lite
+
+* Mist
+
+* Mister
+
+  
+
+## Porting from Neptuno FPGA
+
+Porting from [Neptuno FPGA](https://github.com/neptuno-fpga/) platform is pretty easy with an VGA addon:
+
+* Change FPGA target to Arrow DECA Max10
+* Adapt FPGA pinout in .qsf file ([check this template)](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/DECA_Neptuno_board_test/Deca/tld_test_placa_deca_neptuno.qsf)
+* No need to adapt clocks
+* Adapt Video & Audio  (see above)
+* Most cores use 32 MB SDRAM of the same kind of memory used by Mister modules ([see hack to connect it to DECA board)](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca)
+* Add pins to control SD card level shifter (see above)
+
+
 

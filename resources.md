@@ -2,7 +2,7 @@
 
 Follows a list of useful resources that were published mainly in the [DECA telegram group](https://t.me/Deca_Max10_FPGA) that are related to  DECA and Max10 FPGA family.
 
-(updated until 27/05/21)
+(updated until 20/06/21)
 
 [See also General FPGA Resources list](https://github.com/SoCFPGA-learning/General/blob/main/resources.md)
 
@@ -12,11 +12,13 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
 * Terasic website https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=&No=944&PartNo=1 
 
-* DECA collaborative community repository https://github.com/SoCFPGA-learning/DECA  Repositorio colaborativo de la comunidad DECA
-
 * Video overview https://www.youtube.com/watch?v=8SaMVaniz8U
 
+* DECA collaborative community repository https://github.com/SoCFPGA-learning/DECA  Repositorio colaborativo de la comunidad DECA
+
 * Porting cores to DECA board  https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores
+
+* Using DECA's integrated TLV320AIC3254 Audio DAC https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/AudioCODEC
 
   
 
@@ -52,6 +54,8 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
 ### DECA Projects:
 
+* Examples of bare metal RiscV programming with softcore on a fpga https://github.com/infphyny/FpgaRiscV
+
 * Interfacing a BeagleBone BLE/Wi-Fi Cape with an Arrow Max10 DECA board: Part 1 https://e2e.ti.com/blogs_/b/process/archive/2015/10/12/interfacing-a-beaglebone-ble-wi-fi-cape-with-an-arrow-max10-deca-board-part-1
 
 * Proyecto final de carrera - Desarrollo de una aplicación de detección de gestos y medida de distancias http://oa.upm.es/52363/
@@ -71,7 +75,9 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
   
 
-### DECA peripherals Projects:
+### DECA peripherals related projects:
+
+* Test for video output using the ADV7513 chip on a de10 nano board  https://github.com/nhasbun/de10nano_vgaHdmi_chip.  Includes programing and reference guide for ADV7513 chip.
 
 * HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
 
@@ -89,13 +95,16 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 * RISC-V https://github.com/syntacore/scr1-sdk (DE10-Lite)
 * Pico RISCV32 for the DE10-Lite (MAX10 based) https://github.com/raps500/07_PicoRV32 (DE10-Lite)
 * FPGA SDRAM controller https://github.com/Muellegr/FPGA-Max10-SDRAM-Project-1 (DE10-Lite)
+* Flicker fixer for Amiga 500/2000 https://github.com/niklasekstrom/flickerfixer DE10-Lite)
 * Easy FPGA CPU with MAX1000 (NIOS II) https://hackaday.com/2018/10/05/easy-fpga-cpu-with-max1000/  (MAX1000)
 * Run DOS with 8086 on FPGA based on the next186 https://github.com/hi631/FPGA_DOS   (MAX1000)
 * CPU86, the Free VHDL CPU8088 IP core https://github.com/nsauzede/cpu86 (MAX1000)
 * Persistence of vision hack https://hackaday.com/2018/08/31/max1000-tutorial-is-quite-persistent/ (MAX1000)
+* MAX1000 VHDPlus accelerometer Lab  https://www.youtube.com/watch?v=zSNgOrOqXTg (MAX1000)
 * The FPGA FM Stereo Radio project for the CQ MAX10-FB https://github.com/Rapidnack/MAX10FB_FM_Stereo   ( CQ MAX10-FB )
 * The FPGASID-Project aims to rebuild the famous Synthesizer chip MOS6581 know from Commodore 8-bit computers.  http://www.fpgasid.de/project-definition  (Altera MAX10 FPGA)
 * X-Ray Vision for FPGAs: Using Verifla https://hackaday.com/2018/11/09/x-ray-vision-for-fpgas-using-verifla/  (MAX10)
+* FM-transmitter project https://github.com/natanvotre/fm-transmitter/tree/master/src (Terasic Max10 plus)
 
 
 
@@ -103,6 +112,7 @@ Follows a list of useful resources that were published mainly in the [DECA teleg
 
 * Terasic DE10-Lite https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1021 (MAX10M50 , 64MB SDRAM, 444 VGA)
 * MAX1000 https://www.arrow.com/en/products/max1000/arrow-development-tools (10M08, 8 MB SDRAM)
+  * Arrow's Max-1000: A gem for all the wrong reasons https://zipcpu.com/blog/2017/12/16/max1k.html
 * maXimator https://maximator-fpga.org
 * CQ MAX10-FB (Japanesse board)
 * MAX® 10 FPGA 10M50 Evaluation Kit https://www.intel.com/content/www/us/en/programmable/products/boards_and_kits/dev-kits/altera/kit-max-10m50-evaluation.html

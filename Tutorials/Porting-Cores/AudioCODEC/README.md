@@ -32,7 +32,7 @@ FPGA is listed in Table 3-10.
 
 The following implementation uses SPI communication (Max10 master, AIC3254 slave).
 
-The original code comes from "adc_mic" example from [Terasic's Max10 plus board resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1223&PartNo=4).
+The original code comes from "adc_mic" example from [Terasic's Max10 plus board resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1223&PartNo=4).  It can also be found in this [fm-transmitter project](https://github.com/natanvotre/fm-transmitter/tree/master/src).
 
 **Add following files to a folder named "audio" inside Quartus project folder**
 
