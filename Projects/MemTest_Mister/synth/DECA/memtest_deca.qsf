@@ -116,7 +116,7 @@ set_location_assignment PIN_V11 -to SDRAM_BA[0]
 set_location_assignment PIN_V13 -to SDRAM_BA[1]
 # DQML/DQMH not connected on XS 2.2/2.4
 set_location_assignment PIN_Y11 -to SDRAM_DQML
-set_location_assignment PIN_W13 -to DRAM_DQMH
+set_location_assignment PIN_W13 -to SDRAM_DQMH
 ###
 
 # Video
@@ -326,6 +326,7 @@ set_global_assignment -name CDF_FILE output_files/Chain3.cdf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
 
 
 
