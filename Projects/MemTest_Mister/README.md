@@ -8,6 +8,8 @@ Tested with PS2 & R2R VGA adapter (333)  https://www.waveshare.com/vga-ps2-board
 
 Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca))
 
+Added HDMI Output.
+
 
 
 ### Result of memtest:     Working at 167 MHz without errors

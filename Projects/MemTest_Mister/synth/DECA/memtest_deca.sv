@@ -42,7 +42,9 @@ module memtest_deca
 	// Clocks
 	input wire	clock_50_i,
 
-	
+	//////////// KEY //////////
+	input 		     [1:0]		KEY,
+		
 	// SDRAM	
 	output [12:0] SDRAM_A,
 	output  [1:0] SDRAM_BA,
@@ -81,14 +83,28 @@ module memtest_deca
 	input wire	ear_i,
 	output wire	mic_o					= 1'b0,
 
+
+	//////////// HDMI-TX //////////
+	inout 		          		HDMI_I2C_SCL,
+	inout 		          		HDMI_I2C_SDA,
+	inout 		     [3:0]		HDMI_I2S,
+	inout 		          		HDMI_LRCLK,
+	inout 		          		HDMI_MCLK,
+	inout 		          		HDMI_SCLK,
+	output		          		HDMI_TX_CLK,
+	output		    [23:0]		HDMI_TX_D,
+	output		          		HDMI_TX_DE,
+	output		          		HDMI_TX_HS,
+	input 		          		HDMI_TX_INT,
+	output		          		HDMI_TX_VS,
+
+
 		// VGA
 	output  [2:0] VGA_R,
 	output  [2:0] VGA_G,
 	output  [2:0] VGA_B,
 	output        VGA_HS,
 	output        VGA_VS//,
-
-
 );
 
 
@@ -482,8 +498,30 @@ tester my_memtst
 	.DRAM_BA_1(SDRAM_BA[1])
 );
 
+///////////////////////////////////////////////////////////////////
+//  HDMI VIDEO
+wire reset_n = KEY[0];
+
+//HDMI I2C	
+I2C_HDMI_Config u_I2C_HDMI_Config (
+	.iCLK(clock_50_i),
+	.iRST_N(reset_n),
+	.I2C_SCLK(HDMI_I2C_SCL),
+	.I2C_SDAT(HDMI_I2C_SDA),
+	.HDMI_TX_INT(HDMI_TX_INT)
+	);
+
+	assign HDMI_TX_DE = VGA_DE;
+	assign HDMI_TX_HS = hs;
+	assign HDMI_TX_VS = vs;	
+	assign HDMI_TX_CLK = videoclk;
+	assign HDMI_TX_D[23:16] = {8{r}};
+	assign HDMI_TX_D[15:8] = {8{g}};
+	assign HDMI_TX_D[7:0] = {8{b}};
 
 ///////////////////////////////////////////////////////////////////
+// VGA VIDEO
+
 wire videoclk;
 
 vid_pll vid_pll
@@ -495,7 +533,7 @@ vid_pll vid_pll
 //assign CLK_VIDEO = videoclk;
 //assign CE_PIXEL  = 1;
 
-wire hs, vs;
+wire hs, vs, VGA_DE;
 wire [1:0] b, r, g;
 vgaout showrez
 (
@@ -508,7 +546,7 @@ vgaout showrez
 	.mark(8'h80 >> {~auto, secs[2:0]}),
 	.hs(hs),
 	.vs(vs),
-	//.de(VGA_DE),
+	.de(VGA_DE),
 	.b(b),
 	.r(r),
 	.g(g)
