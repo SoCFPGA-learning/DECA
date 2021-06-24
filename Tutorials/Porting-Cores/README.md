@@ -8,7 +8,17 @@ See below for target cores and porting from Neptuno FPGA platform.
 
 ### Video & Audio through HDMI
 
-To be defined.
+For HDMI video only check this [commit.](https://github.com/SoCFPGA-learning/DECA/commit/92364bb4a4172e98cee600806a3487ae718511b1)
+
+It should be as easy as initialize the  ADV7513 chip though I2C and thereafter assign video and audio signals to the IO pins between FPGA and ADV7513.
+
+Data enable signal might not be present in your core but should be easy to adapt following this code:
+
+```
+assign oVGA_DE    = ((H_Cont >= (H_SYNC+H_BACK)) && (H_Cont < (H_SYNC+H_BACK+H_ACT))) && ((V_Cont >= (V_SYNC+V_BACK)) && (V_Cont < (V_SYNC+V_BACK+V_ACT))) ? 1'b1:1'b0;
+```
+
+HDMI audio not tested yet.
 
 Some useful resources:
 
