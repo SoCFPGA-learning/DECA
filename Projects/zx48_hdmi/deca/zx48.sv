@@ -5,6 +5,7 @@ v2 changed to video from ZXuno port which is VGA 333
 v3 I2S Audio though DECA DAC TLV320AIC3254
 v4 HDMI video, EAR (changed pin and loop.hex)
 v5 HDMI audio
+v6 Joystick support  (UDLR + 2 buttons)
 */
 
 
@@ -39,8 +40,7 @@ module zx48
 	inout  wire       keybCk,
 	inout  wire       keybDQ,
 
-//	input  wire[ 5:0] jstick1,
-//	input  wire[ 5:0] jstick2,
+	input  wire[ 5:0] jstick1,
 
 	output wire       sdramCk,
 	output wire       sdramCe,
@@ -147,8 +147,16 @@ wire nmi = F5;
 wire[11:0] laudio;
 wire[11:0] raudio;
 
-//wire[7:0] joy1 = { 3'd0, ~jstick1 };
-//wire[7:0] joy2 = { 2'd0, ~jstick2 };
+wire[7:0] joy1 = { 2'd0, ~jstick1 };
+/*
+0 - Nada
+1 - Derecha		jstick1[0]
+2 - Izquierda	jstick1[1]
+4 - Abajo		jstick1[2]
+8 - Arriba		jstick1[3]
+16 - Disparo A	jstick1[4]
+32 - Disparo B	jstick1[5]
+*/
 
 wire[ 7:0] ramD;
 wire[ 7:0] ramQ = sdrQ[7:0];
@@ -175,8 +183,8 @@ main Main
 	.kstb   (kstb   ),
 	.make   (make   ),
 	.code   (code   ),
-//	.joy1   (joy1   ),
-//	.joy2   (joy2   ),
+	.joy1   (joy1   ),
+	.joy2   (joy2   ),
 	.cs     (usdCs  ),
 	.ck     (usdCk  ),
 	.miso   (usdMiso),
@@ -223,7 +231,9 @@ assign sdramCk = clock;
 assign sdramCe = 1'b1;
 
 //-------------------------------------------------------------------------------------------------
-	//--RESET DELAY ---
+   // Audio DAC DECA 
+   
+   //--RESET DELAY ---
    reg RESET_DELAY_n;
    reg   [31:0]  DELAY_CNT;   
    assign debugled = RESET_DELAY_n;
@@ -259,6 +269,7 @@ assign sdramCe = 1'b1;
     
 //-------------------------------------------------------------------------------------------------
 
+//  I2S AUDIO 
 wire[15:0] ldata = { 1'b0, laudio, 2'b00 };
 wire[15:0] rdata = { 1'b0, raudio, 2'b00 };
 
@@ -307,8 +318,6 @@ assign HDMI_I2S[0] = i2sD;
 
 //-------------------------------------------------------------------------------------------------
 
-
 assign led = { ~usdCs, map };
-
 
 endmodule

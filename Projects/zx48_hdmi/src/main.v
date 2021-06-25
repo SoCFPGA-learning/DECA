@@ -23,7 +23,6 @@ module main
 	input  wire[ 7:0] code,
 
 	input  wire[ 7:0] joy1,    // joystick
-	input  wire[ 7:0] joy2,
 
 	output wire       cs,      // uSD
 	output wire       ck,
@@ -263,7 +262,7 @@ assign d
 
 	: !ioFE ? { 1'b1, ear|speaker, 1'b1, keyQ }
 	: !ioEB ? usdQ
-	: !ioDF ? joy1|joy2
+	: !ioDF ? joy1
 
 	: !ioFFFD ? psgQ
 

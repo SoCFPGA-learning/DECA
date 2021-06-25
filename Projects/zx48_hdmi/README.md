@@ -10,11 +10,9 @@ HDMI video output.
 
 Supports EAR for loading tap files though the line in jack audio connector.
 
+Joystick support (UDLR + 2 buttons)
+
 ![screen](screen.png)
-
-To be added:
-
-* Joystick support
 
 
 
@@ -56,4 +54,3 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
-
