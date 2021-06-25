@@ -87,7 +87,6 @@ set_global_assignment -name VERILOG_FILE ../src/memory.v
 set_global_assignment -name VERILOG_FILE ../src/cpu.v
 set_global_assignment -name VERILOG_FILE ../src/audio.v
 set_global_assignment -name VERILOG_FILE ../src/sdram.v
-#set_global_assignment -name VERILOG_FILE ../src/scandoubler.v
 set_global_assignment -name VERILOG_FILE ../src/ps2.v
 set_global_assignment -name VERILOG_FILE ../src/main.v
 set_global_assignment -name SDC_FILE zx48.sdc
@@ -110,7 +109,6 @@ set_location_assignment PIN_C7 -to led[0]
 
 # debug led 7, video reset KEY0, HDMI audio off SW0
 set_location_assignment PIN_C5 -to debugled
-set_instance_assignment -name IO_STANDARD "1.2 V" -to debugled
 set_location_assignment PIN_H21 -to KEY0
 set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to KEY0
 set_location_assignment PIN_J21 -to SW0

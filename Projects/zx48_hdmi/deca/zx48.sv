@@ -280,7 +280,7 @@ wire reset_n = KEY0;
 pll2 u_pll (
 	.inclk0(clock50),
 	.areset(!reset_n),
-	.c0(vpg_pclk)
+	.c0(vpg_pclk),
 	.c1(pll_1536k)
 	);
 
