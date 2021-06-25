@@ -46,7 +46,7 @@ if  ( CLK_DELAY  > 62  )   // 25= 1M clock  / 62 =400k
     CLK_DELAY <= 0;
 	 CLK_1M    <= ~CLK_1M;
 	end
-	else CLK_DELAY <= CLK_DELAY + 1;
+	else CLK_DELAY <= CLK_DELAY + 16'd1;
 end
 
 //==== SPI ST === // 
@@ -90,7 +90,7 @@ else
        ST       <=5;
 		 SCLK     <=0;
 		 READ_DATA[15:0]  <= {READ_DATA[14:0], DOUT } ; 
-		 COUNTER  <=COUNTER+1 ;
+		 COUNTER  <=COUNTER+ 8'd1 ;
   end 
 	5:begin 
        if (COUNTER !=16)  ST <=2;
@@ -105,7 +105,7 @@ else
 					   COUNTER  <=0; 
 					end  //read
 				 else  begin 
-				   WORD_CNT <= WORD_CNT+1 ;
+				   WORD_CNT <= WORD_CNT+8'd1 ;
 				   ST <=6; 
 				   CS <=1; //<----CS 1
 				 end

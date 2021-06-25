@@ -68,6 +68,7 @@ always @(posedge clock) if(pc3M5) mi <= vduI;
 wire[ 7:0] d;
 wire[ 7:0] q;
 wire[15:0] a;
+wire mreq, iorq, m1, rd, wr;
 
 cpu Cpu
 (
@@ -178,6 +179,8 @@ turbosound Turbosound
 );
 
 //-------------------------------------------------------------------------------------------------
+
+wire vduCn, vduRd, vduI;
 
 video Video
 (

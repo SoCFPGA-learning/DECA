@@ -19,6 +19,7 @@ Joystick support (UDLR + 2 buttons)
 Important notes:
 
 * **If screen is black after bootup, press space + F12 to perform a hard reset**
+* **It is needed an SDcard with esxdos 0.89** (bin and sys folders)
 * Key0 is assigned as HDMI DAC reset
 
 
@@ -54,3 +55,4 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
+

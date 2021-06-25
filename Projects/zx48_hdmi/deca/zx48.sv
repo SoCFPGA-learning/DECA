@@ -82,6 +82,8 @@ module zx48
 
 //-------------------------------------------------------------------------------------------------
 
+wire clock, locked;
+
 clock Clock
 (
 	.inclk0 (clock50), // 50.000 MHz input
@@ -110,6 +112,7 @@ wire ne7M0 = power & ~cc[0] & ~cc[1] & ~cc[2];
   // 
 
 wire[7:0] code;
+wire kstb, make;
 
 ps2 PS2
 (
@@ -165,6 +168,7 @@ wire[17:0] ramA;
 wire       blank;
 wire[ 1:0] sync;
 wire[23:0] rgb;
+wire rfsh, map, ramRd, ramWr;
 
 main Main
 (
@@ -184,7 +188,6 @@ main Main
 	.make   (make   ),
 	.code   (code   ),
 	.joy1   (joy1   ),
-	.joy2   (joy2   ),
 	.cs     (usdCs  ),
 	.ck     (usdCk  ),
 	.miso   (usdMiso),
@@ -205,6 +208,7 @@ wire sdrWr = ramWr;
 wire[15:0] sdrD = {2{ramD}};
 wire[15:0] sdrQ;
 wire[23:0] sdrA = { 6'd0, ramA };
+wire ready;
 
 sdram SDram
 (
@@ -288,11 +292,12 @@ i2s I2S
 
 //  HDMI 
 wire reset_n = KEY0;
+wire hdmi_pclk;
 
 pll2 u_pll (
 	.inclk0(clock50),
 	.areset(!reset_n),
-	.c0(vpg_pclk)
+	.c0(hdmi_pclk)
 	);
 
 I2C_HDMI_Config u_I2C_HDMI_Config (
@@ -304,7 +309,7 @@ I2C_HDMI_Config u_I2C_HDMI_Config (
 	);
 
 //  HDMI VIDEO
-assign HDMI_TX_CLK = ~vpg_pclk;
+assign HDMI_TX_CLK = ~hdmi_pclk;
 assign HDMI_TX_DE = ~blank;
 assign HDMI_TX_HS = sync[0];
 assign HDMI_TX_VS = sync[1];
