@@ -1,4 +1,4 @@
-# zx48 DECA port
+# zx48 DECA port (VGA version)
 
 Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48
 
@@ -13,8 +13,14 @@ Audio works though line out 3.5 jack connector.
 Missing features:
 
 * Ear
-
 * HDMI Audio & Video output
+* Joystick support
+
+
+
+Important notes:
+
+* **If it ever hangs press space + F12 to perform a hard reset**
 
   
 
@@ -48,4 +54,3 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
-

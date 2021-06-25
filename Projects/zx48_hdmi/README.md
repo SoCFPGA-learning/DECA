@@ -1,6 +1,6 @@
 # zx48 DECA port (HDMI version)
 
-Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48   &  Mister port for the HDMI video part https://github.com/Kyp069/zx48-MiSTer/
+Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48   
 
 Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca))
 
@@ -16,7 +16,14 @@ To be added:
 
 * Joystick support
 
-  
+
+
+Important notes:
+
+* **If screen is black after bootup, press space + F12 to perform a hard reset**
+* Key0 is assigned as HDMI DAC reset
+
+
 
 
 Follows original readme.md.
@@ -49,3 +56,4 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
+
