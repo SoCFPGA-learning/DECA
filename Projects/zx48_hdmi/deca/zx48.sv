@@ -4,6 +4,7 @@ v1 video modified to work with VGA 333
 v2 changed to video from ZXuno port which is VGA 333
 v3 I2S Audio though DECA DAC TLV320AIC3254
 v4 HDMI video, EAR (changed pin and loop.hex)
+v5 HDMI audio
 */
 
 
@@ -280,11 +281,9 @@ wire reset_n = KEY0;
 pll2 u_pll (
 	.inclk0(clock50),
 	.areset(!reset_n),
-	.c0(vpg_pclk),
-	.c1(pll_1536k)
+	.c0(vpg_pclk)
 	);
 
-//  HDMI VIDEO
 I2C_HDMI_Config u_I2C_HDMI_Config (
 	.iCLK(clock50),
 	.iRST_N(reset_n),
@@ -293,6 +292,7 @@ I2C_HDMI_Config u_I2C_HDMI_Config (
 	.HDMI_TX_INT(HDMI_TX_INT)
 	);
 
+//  HDMI VIDEO
 assign HDMI_TX_CLK = ~vpg_pclk;
 assign HDMI_TX_DE = ~blank;
 assign HDMI_TX_HS = sync[0];
@@ -300,7 +300,10 @@ assign HDMI_TX_VS = sync[1];
 assign HDMI_TX_D = rgb;
 
 //  HDMI AUDIO
-
+assign HDMI_MCLK = i2sMck;
+assign HDMI_SCLK = i2sSck;
+assign HDMI_LRCLK = i2sLr;
+assign HDMI_I2S[0] = i2sD;
 
 //-------------------------------------------------------------------------------------------------
 
