@@ -3,6 +3,7 @@ Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48
 v1 video modified to work with VGA 333
 v2 changed to video from ZXuno port which is VGA 333
 v3 I2S Audio though DECA DAC TLV320AIC3254
+v4 HDMI video, EAR (changed pin and loop.hex)
 */
 
 
@@ -23,7 +24,8 @@ module zx48
 	output wire       i2sLr,	//AUDIO_WCLK
 	output wire       i2sD,		//AUDIO_DIN_MFP1
 
-	input  wire       ear,		//AUDIO_DOUT_MFP2
+	input  wire       ear,		
+	
 	// Audio DAC DECA
 	inout wire 		AUDIO_GPIO_MFP5,
 	input wire 		AUDIO_MISO_MFP4,
@@ -272,10 +274,17 @@ i2s I2S
 
 //-------------------------------------------------------------------------------------------------
 
-//  HDMI VIDEO
+//  HDMI 
 wire reset_n = KEY0;
 
-//HDMI I2C	
+pll2 u_pll (
+	.inclk0(clock50),
+	.areset(!reset_n),
+	.c0(vpg_pclk)
+	.c1(pll_1536k)
+	);
+
+//  HDMI VIDEO
 I2C_HDMI_Config u_I2C_HDMI_Config (
 	.iCLK(clock50),
 	.iRST_N(reset_n),
@@ -284,19 +293,17 @@ I2C_HDMI_Config u_I2C_HDMI_Config (
 	.HDMI_TX_INT(HDMI_TX_INT)
 	);
 
-pll2 u_pll (
-	.inclk0(clock50),
-	.areset(!reset_n),
-	.c0(vpg_pclk)
-	);
-
 assign HDMI_TX_CLK = ~vpg_pclk;
 assign HDMI_TX_DE = ~blank;
 assign HDMI_TX_HS = sync[0];
 assign HDMI_TX_VS = sync[1];
 assign HDMI_TX_D = rgb;
 
+//  HDMI AUDIO
+
+
 //-------------------------------------------------------------------------------------------------
+
 
 assign led = { ~usdCs, map };
 

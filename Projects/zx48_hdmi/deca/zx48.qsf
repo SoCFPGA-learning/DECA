@@ -87,20 +87,19 @@ set_global_assignment -name VERILOG_FILE ../src/memory.v
 set_global_assignment -name VERILOG_FILE ../src/cpu.v
 set_global_assignment -name VERILOG_FILE ../src/audio.v
 set_global_assignment -name VERILOG_FILE ../src/sdram.v
-set_global_assignment -name VERILOG_FILE ../src/scandoubler.v
+#set_global_assignment -name VERILOG_FILE ../src/scandoubler.v
 set_global_assignment -name VERILOG_FILE ../src/ps2.v
 set_global_assignment -name VERILOG_FILE ../src/main.v
 set_global_assignment -name SDC_FILE zx48.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE zx48.sv
 set_global_assignment -name QIP_FILE clock.qip
 
-set_global_assignment -name VERILOG_FILE audio/AUDIO_SPI_CTL_RD.v
-set_global_assignment -name VERILOG_FILE audio/SPI_RAM.v
+set_global_assignment -name VERILOG_FILE rtl_audio/AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE rtl_audio/SPI_RAM.v
 
-set_global_assignment -name VERILOG_FILE video/I2C_Controller.v
-set_global_assignment -name VERILOG_FILE video/I2C_HDMI_Config.v
-set_global_assignment -name QIP_FILE video/pll/pll2.qip
-
+set_global_assignment -name VERILOG_FILE rtl_hdmi/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE rtl_hdmi/I2C_HDMI_Config.v
+set_global_assignment -name QIP_FILE rtl_hdmi/pll/pll2.qip
 
 # Pin & Location Assignments
 # ==========================
@@ -109,36 +108,21 @@ set_location_assignment PIN_M8 -to clock50
 set_location_assignment PIN_C8 -to led[1]
 set_location_assignment PIN_C7 -to led[0]
 
-# debug led 7, KEY0
+# debug led 7, video reset KEY0, HDMI audio off SW0
 set_location_assignment PIN_C5 -to debugled
+set_instance_assignment -name IO_STANDARD "1.2 V" -to debugled
 set_location_assignment PIN_H21 -to KEY0
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to KEY0
+set_location_assignment PIN_J21 -to SW0
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to SW0
 
-
-#set_location_assignment PIN_U22 -to pixck
-#set_location_assignment PIN_V22 -to pixbk
-
-set_location_assignment PIN_W6 -to sync[1]
-set_location_assignment PIN_W7 -to sync[0]
-
-#En mis cores rgb[8:0] es r[8:6], g[5:4] y b[2:0]
-set_location_assignment PIN_AA7 -to rgb[8]
-set_location_assignment PIN_Y7 -to rgb[7]
-set_location_assignment PIN_U7 -to rgb[6]
-set_location_assignment PIN_V7 -to rgb[5]
-set_location_assignment PIN_R11 -to rgb[4]
-set_location_assignment PIN_AB7 -to rgb[3]
-set_location_assignment PIN_AB6 -to rgb[2]
-set_location_assignment PIN_AA6 -to rgb[1]
-set_location_assignment PIN_V10 -to rgb[0]
-
-#set_location_assignment PIN_R9 -to ear
 # UDA 1334A  NOT USED W18 P8:3, BCLK Y18 P8:4,  WSEL Y19 P8:5, DIN AA17 P8:6
 #set_location_assignment PIN_W18 -to i2sMck
 #set_location_assignment PIN_Y18 -to i2sSck
 #set_location_assignment PIN_Y19 -to i2sLr
 #set_location_assignment PIN_AA17 -to i2sD
 
-
+# ear
 set_location_assignment PIN_H4 -to ear
 
 #============================================================
@@ -174,13 +158,17 @@ set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SPI_SELECT
 set_location_assignment PIN_R15 -to i2sLr
 set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sLr
 
-
+# ps2
 set_location_assignment PIN_Y6 -to keybDQ
 set_location_assignment PIN_Y5 -to keybCk
-
 set_location_assignment PIN_W9 -to mouseDQ
 set_location_assignment PIN_W5 -to mouseCk
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybDQ
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybCk
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseDQ
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseCk
 
+# joystick
 #set_location_assignment PIN_B13 -to jstick1[5]
 #set_location_assignment PIN_B14 -to jstick1[4]
 #set_location_assignment PIN_B19 -to jstick1[3]
@@ -195,6 +183,20 @@ set_location_assignment PIN_W5 -to mouseCk
 #set_location_assignment PIN_B8 -to jstick2[1]
 #set_location_assignment PIN_B7 -to jstick2[0]
 
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[5]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[4]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[3]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[2]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[1]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[0]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[5]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[4]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[3]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[2]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[1]
+#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[0]
+
+# SD card
 set_location_assignment PIN_T20 -to usdCk
 set_instance_assignment -name IO_STANDARD "1.5 V" -to usdCk
 set_location_assignment PIN_T21 -to usdMosi
@@ -211,13 +213,10 @@ set_location_assignment PIN_R20 -to usdCs
 set_instance_assignment -name IO_STANDARD "1.5 V" -to usdCs
 set_location_assignment PIN_P13 -to SD_SEL
 
-#set_location_assignment PIN_A13  -to rtcScl
-#set_location_assignment PIN_A14  -to rtcSda
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to usdMiso
 
 
-#============================================================
 # HDMI-TX
-#============================================================
 set_location_assignment PIN_C10 -to HDMI_I2C_SCL
 set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2C_SCL
 set_location_assignment PIN_B15 -to HDMI_I2C_SDA
@@ -295,9 +294,7 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_INT
 set_location_assignment PIN_C11 -to HDMI_TX_VS
 set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_VS
 
-#####################
-
-
+# SDRAM
 set_location_assignment PIN_AA14 -to sdramCk
 set_location_assignment PIN_AA16 -to sdramCe
 set_location_assignment PIN_V12 -to sdramCs
@@ -338,38 +335,10 @@ set_location_assignment PIN_U15 -to sdramA[2]
 set_location_assignment PIN_W14 -to sdramA[1]
 set_location_assignment PIN_Y17 -to sdramA[0]
 
-
-# Fitter Assignments
-# ==================
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[5]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[4]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[3]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[2]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[1]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick1[0]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[5]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[4]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[3]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[2]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[1]
-#set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to jstick2[0]
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to usdMiso
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybDQ
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to keybCk
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseDQ
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseCk
-
 #----------------------------------------------------------------------------------
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-
-
-
-
-
-
-
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
