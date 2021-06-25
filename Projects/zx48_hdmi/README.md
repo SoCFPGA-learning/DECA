@@ -4,21 +4,20 @@ Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48   &  Mister port 
 
 Tested with 32 MB SDRAM board for MiSTer (extra slim) XS_2.2 ([see connections](https://github.com/SoCFPGA-learning/DECA/tree/main/Projects/sdram_mister_deca))
 
-Audio works though line out 3.5 jack connector.
+Audio works though line out 3.5 jack connector and HDMI audio output
 
-Added HDMI video output.
+HDMI video output.
 
-Added ear support for loading tap files though the line in jack audio connector.
+Supports EAR for loading tap files though the line in jack audio connector.
 
 ![screen](screen.png)
 
-Missing features:
+To be added:
 
-* HDMI  Audio output
-
-* Joystick
+* Joystick support
 
   
+
 
 Follows original readme.md.
 
@@ -50,4 +49,3 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
-
