@@ -10,7 +10,7 @@ module main
 	input  wire       nmi,
 	output wire       map,
 
-	output wire[ 1:0] blank,	// video
+	output wire       blank,	// video
 	output wire[ 1:0] sync,
 	output wire[23:0] rgb,
 
@@ -179,28 +179,6 @@ turbosound Turbosound
 );
 
 //-------------------------------------------------------------------------------------------------
-/*
-wire[7:0] vduFb;
-
-video Video
-(
-	.clock  (clock  ),
-	.ce     (ne7M0  ),
-	.border (border ),
-	.blank  (blank  ),
-	.hsync  (hsync  ),
-	.vsync  (vsync  ),
-	.r      (r      ),
-	.g      (g      ),
-	.b      (b      ),
-	.i      (i      ),
-	.bi     (vduI   ),
-	.cn     (vduCn  ),
-	.rd     (vduRd  ),
-	.d      (vduQ   ),
-	.a      (vduA   ),
-);
-*/
 
 video Video
 (
@@ -210,11 +188,11 @@ video Video
 	.blank  (blank  ),
 	.sync   (sync   ),
 	.rgb    (rgb    ),
-	.cn     (vduCn  ),
-	.rd     (vduRd  ),
-	.bi     (vduI   ),
-	.d      (vduQ     ),
-	.a      (vduA     )
+	.vb     (vduCn  ),
+	.vrd     (vduRd  ),
+	.vi     (vduI   ),
+	.vd      (vduQ     ),
+	.va      (vduA     )
 );
 //-------------------------------------------------------------------------------------------------
 

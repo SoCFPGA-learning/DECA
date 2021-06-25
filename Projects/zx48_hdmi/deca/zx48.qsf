@@ -138,6 +138,9 @@ set_location_assignment PIN_V10 -to rgb[0]
 #set_location_assignment PIN_Y19 -to i2sLr
 #set_location_assignment PIN_AA17 -to i2sD
 
+
+set_location_assignment PIN_H4 -to ear
+
 #============================================================
 # Audio CODEC TLV320AIC3254
 #============================================================
@@ -150,8 +153,8 @@ set_location_assignment PIN_R14 -to i2sSck
 set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sSck
 set_location_assignment PIN_P15 -to i2sD
 set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sD
-set_location_assignment PIN_P18 -to ear
-set_instance_assignment -name IO_STANDARD "1.5 V" -to ear
+#set_location_assignment PIN_P18 -to ear
+#set_instance_assignment -name IO_STANDARD "1.5 V" -to ear
 set_location_assignment PIN_M22 -to AUDIO_GPIO_MFP5
 set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_GPIO_MFP5
 set_location_assignment PIN_P14 -to i2sMck
@@ -361,6 +364,7 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to mouseCk
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
 
 
 

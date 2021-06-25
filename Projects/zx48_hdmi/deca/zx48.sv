@@ -64,7 +64,7 @@ module zx48
 	inout 		          		HDMI_SCLK,
 	output		          		HDMI_TX_CLK,
 	output		    [23:0]		HDMI_TX_D,
-	output		          		HDMI_TX_DE,    // = ~(VBlank | HBlank)
+	output		          		HDMI_TX_DE,    
 	output		          		HDMI_TX_HS,
 	input 		          		HDMI_TX_INT,
 	output		          		HDMI_TX_VS,
@@ -151,7 +151,7 @@ wire[ 7:0] ramD;
 wire[ 7:0] ramQ = sdrQ[7:0];
 wire[17:0] ramA;
 
-wire[ 1:0] blank;
+wire       blank;
 wire[ 1:0] sync;
 wire[23:0] rgb;
 
@@ -272,21 +272,6 @@ i2s I2S
 
 //-------------------------------------------------------------------------------------------------
 
-scandoubler #(.RGBW(24)) Scandoubler
-(
-	.clock  (clock  ),
-	.ice    (ne7M0  ),
-	.ihs    (sync[0]  ),
-	.ivs    (sync[1]  ),
-	.irgb   (rgb   ),
-	.oce    (ne14M  ),
-	.ohs    (ohsync ),
-	.ovs    (ovsync ),
-	.orgb   (orgb   )
-);
-
-//-------------------------------------------------------------------------------------------------
-
 //  HDMI VIDEO
 wire reset_n = KEY0;
 
@@ -306,10 +291,10 @@ pll2 u_pll (
 	);
 
 assign HDMI_TX_CLK = ~vpg_pclk;
-assign HDMI_TX_DE = ~|blank;
-assign HDMI_TX_HS = ohsync;
-assign HDMI_TX_VS = ovsync;
-assign HDMI_TX_D = orgb;
+assign HDMI_TX_DE = ~blank;
+assign HDMI_TX_HS = sync[0];
+assign HDMI_TX_VS = sync[1];
+assign HDMI_TX_D = rgb;
 
 //-------------------------------------------------------------------------------------------------
 
