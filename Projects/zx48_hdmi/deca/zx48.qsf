@@ -93,12 +93,12 @@ set_global_assignment -name SDC_FILE zx48.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE zx48.sv
 set_global_assignment -name QIP_FILE clock.qip
 
-set_global_assignment -name VERILOG_FILE rtl_audio/AUDIO_SPI_CTL_RD.v
-set_global_assignment -name VERILOG_FILE rtl_audio/SPI_RAM.v
+set_global_assignment -name VERILOG_FILE rtl/audio/AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE rtl/audio/SPI_RAM.v
 
-set_global_assignment -name VERILOG_FILE rtl_hdmi/I2C_Controller.v
-set_global_assignment -name VERILOG_FILE rtl_hdmi/I2C_HDMI_Config.v
-set_global_assignment -name QIP_FILE rtl_hdmi/pll/pll2.qip
+set_global_assignment -name VERILOG_FILE rtl/hdmi/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE rtl/hdmi/I2C_HDMI_Config.v
+
 
 # Pin & Location Assignments
 # ==========================
@@ -326,6 +326,7 @@ set_location_assignment PIN_Y17 -to sdramA[0]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
 
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

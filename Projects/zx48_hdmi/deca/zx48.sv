@@ -83,13 +83,18 @@ module zx48
 //-------------------------------------------------------------------------------------------------
 
 wire clock, locked;
+wire hdmi_pclk;
+wire reset_n;
+assign reset_n = KEY0;
 
-clock Clock
-(
-	.inclk0 (clock50), // 50.000 MHz input
-	.c0     (clock  ), // 56.000 MHz output
+
+clock Clock (
+	.inclk0 (clock50),   // 50 MHz input
+	.areset(!reset_n),
+	.c0     (clock  ),   // 56 MHz output
+	.c1     (hdmi_pclk), // 28 MHz video output
 	.locked (locked )
-);
+	);
 
 reg[3:0] pw = 0;
 wire power = pw[3];
@@ -290,16 +295,7 @@ i2s I2S
 
 //-------------------------------------------------------------------------------------------------
 
-//  HDMI 
-wire reset_n = KEY0;
-wire hdmi_pclk;
-
-pll2 u_pll (
-	.inclk0(clock50),
-	.areset(!reset_n),
-	.c0(hdmi_pclk)
-	);
-
+//  HDMI I2C CONFIG
 I2C_HDMI_Config u_I2C_HDMI_Config (
 	.iCLK(clock50),
 	.iRST_N(reset_n),
