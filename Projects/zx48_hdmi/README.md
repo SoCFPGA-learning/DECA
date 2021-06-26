@@ -12,7 +12,7 @@ Supports EAR for loading tap files though the line in jack audio connector.
 
 Joystick support (UDLR + 2 buttons)
 
-![screen](screen.png)
+![screen](screen.jpg)
 
 
 
@@ -55,4 +55,3 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
-
