@@ -1,6 +1,6 @@
 # VGA conversion from 666 to 333
 
-
+See following example and adapt it to your own situation. Left is orignal core. Right is Deca's ported core.
 
 port definition:
 

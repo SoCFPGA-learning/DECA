@@ -1,37 +1,20 @@
 # Porting cores to DECA board
 
-See below for target cores and porting from Neptuno FPGA platform.
+See below for target cores and porting from them.
 
 ### Audio through Line out 3.5 jack
 
-* Using DECA's integrated TLV320AIC3254 Audio DAC https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/AudioCODEC
+Using DECA's integrated TLV320AIC3254 Audio DAC https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/AudioCODEC
 
 ### Video & Audio through HDMI
 
-For HDMI video only check this [commit.](https://github.com/SoCFPGA-learning/DECA/commit/92364bb4a4172e98cee600806a3487ae718511b1)
-
-It should be as easy as initialize the  ADV7513 chip though I2C and thereafter assign video and audio signals to the IO pins between FPGA and ADV7513.
-
-Data enable signal might not be present in your core but should be easy to adapt following this code:
-
-```
-assign oVGA_DE    = ((H_Cont >= (H_SYNC+H_BACK)) && (H_Cont < (H_SYNC+H_BACK+H_ACT))) && ((V_Cont >= (V_SYNC+V_BACK)) && (V_Cont < (V_SYNC+V_BACK+V_ACT))) ? 1'b1:1'b0;
-```
-
-HDMI audio not tested yet.
-
-Some useful resources:
-
-* HDMI examples from Terasic CD
-* ADV7513-Based Video Generators application note https://www.analog.com/media/en/technical-documentation/application-notes/AN-1270.pdf
-* Test for video output using the ADV7513 chip on a de10 nano board  https://github.com/nhasbun/de10nano_vgaHdmi_chip.  Includes programing and reference guide for ADV7513 chip.
-* HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
+Using DECA's HDMI TX https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/HDMI
 
 ### Video using an VGA adapter
 
 Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
-* [VGA conversion from 666 to 333](VGA333/README.md)
+See [VGA conversion from 666 to 333](VGA333/README.md)
 
 ### SD card 
 
@@ -71,14 +54,14 @@ Using an VGA adapter (333)  https://www.waveshare.com/vga-ps2-board.htm
 
 * Regenerate all IPs for the Max10 family
 
+  
+
 
 ## Troubleshooting
 
-* ALTDDIO_OUT  does not work, change it for "Altera GPIO Lite IP Core"
+* IP ALTDDIO_OUT  does not work in Max10 family. Change it for "Altera GPIO Lite IP Core".
 
   Direct instantiation of the ALTDDIO_OUT primitive does not seem to work reliably on the chosen FPGA and/or tool chain (MAX 10). The solution is to generate an IP core with the MegaWizard GPIO Lite Intel FPGA IP using a DDR register output.
-
-
 
 
 

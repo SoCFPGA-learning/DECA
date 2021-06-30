@@ -1,0 +1,120 @@
+# Using DECA's HDMI TX
+
+The development board provides High Performance HDMI Transmitter via the Analog Devices
+ADV7513 which incorporates HDMI v1.4 features, including 3D video support, and 165 MHz
+supports all video formats up to 1080p and UXGA. The ADV7513 is controlled via a serial I2C bus
+interface, which is connected to pins on the MAX 10 FPGA. (extract from DECA user manual)
+
+A schematic diagram of the HDMI TX circuitry is shown in next figure:  
+
+![image-20210630232125358](image-20210630232125358.png)
+
+See DECA User manual Table 3-14 for a list of HDMI Interface pin assignments and signal names relative to the MAX 10 device. 
+
+### Resources
+
+* [ADV7513_Datasheet.pdf](datasheets/ADV7513_Datasheet.pdf) 
+* [ADV7513_Hardware_User's_Guide_R0.pdf](datasheets/ADV7513_Hardware_User's_Guide_R0.pdf) 
+* [ADV7513_Programming_Guide_RB.pdf](datasheets/ADV7513_Programming_Guide_RB.pdf) 
+
+Others:
+
+* For HDMI video only check this [commit.](https://github.com/SoCFPGA-learning/DECA/commit/92364bb4a4172e98cee600806a3487ae718511b1)
+* HDMI examples from Terasic CD
+* ADV7513-Based Video Generators application note https://www.analog.com/media/en/technical-documentation/application-notes/AN-1270.pdf
+* Test for video output using the ADV7513 chip on a de10 nano board  https://github.com/nhasbun/de10nano_vgaHdmi_chip.  Includes programing and reference guide for ADV7513 chip.
+* HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
+
+### Adapting cores to work with HDMI (Video & Audio)
+
+The following implementation uses I2C communication.
+
+The original code comes from "HDMI_TX" example from [Deca's Terasic Resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=&No=944&PartNo=4).
+
+
+
+**Add following files to a folder named "hdmi" inside Quartus project folder**
+
+* [I2C_HDMI_Config.v](https://github.com/SoCFPGA-learning/DECA/raw/main/Projects/zx48_hdmi/deca/rtl/hdmi/I2C_HDMI_Config.v) Send configuration parameters to the ADV7513 chip through I2C
+
+* [I2C_Controller.v](https://github.com/SoCFPGA-learning/DECA/raw/main/Projects/zx48_hdmi/deca/rtl/hdmi/I2C_Controller.v) I2C protocol controller
+
+  
+
+**Modify QSF file**
+
+* Add Verilog files:
+
+```
+set_global_assignment -name VERILOG_FILE hdmi/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE hdmi/I2C_HDMI_Config.v
+```
+
+* Add additional PIN assignments for the HDMI. Check HDMI section in this [template](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48_hdmi/deca/zx48.qsf).
+
+  
+
+**Adapt Top project file**
+
+(following excerpts are extracted from this [example](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48_hdmi/deca/zx48.sv))
+
+Add HDMI ports to top module:
+
+```verilog
+	// HDMI-TX  DECA 
+	inout 		          		HDMI_I2C_SCL,
+	inout 		          		HDMI_I2C_SDA,
+	inout 		     [3:0]		HDMI_I2S,
+	inout 		          		HDMI_LRCLK,
+	inout 		          		HDMI_MCLK,
+	inout 		          		HDMI_SCLK,
+	output		          		HDMI_TX_CLK,
+	output		    [23:0]		HDMI_TX_D,
+	output		          		HDMI_TX_DE,    
+	output		          		HDMI_TX_HS,
+	input 		          		HDMI_TX_INT,
+	output		          		HDMI_TX_VS,
+```
+
+In the module code add and adapt this code with your own "reset" signal and a 50 MHz clock (it might work with other frequencies as well), as well as all the related video signals:
+
+```verilog
+//  HDMI I2C CONFIG
+I2C_HDMI_Config u_I2C_HDMI_Config (
+	.iCLK(clock50),
+	.iRST_N(reset_n),
+	.I2C_SCLK(HDMI_I2C_SCL),
+	.I2C_SDAT(HDMI_I2C_SDA),
+	.HDMI_TX_INT(HDMI_TX_INT)
+	);
+
+//  HDMI VIDEO
+assign HDMI_TX_CLK = ~hdmi_pclk;
+assign HDMI_TX_DE = ~blank;
+assign HDMI_TX_HS = sync[0];
+assign HDMI_TX_VS = sync[1];
+assign HDMI_TX_D = rgb;
+
+//  HDMI AUDIO
+assign HDMI_MCLK = i2sMck;
+assign HDMI_SCLK = i2sSck;
+assign HDMI_LRCLK = i2sLr;
+assign HDMI_I2S[0] = i2sD;
+// those signals i2sMck, i2sSck, i2sLr, i2sD should come from an I2S module from the original core. 
+// If the core has no I2S check the Audio Section to convert PWM to I2S audio.
+```
+
+
+
+Data enable signal (HDMI_TX_DE) might not be present in your core but should be easy to adapt:
+
+* If you have the blank signal, try  `assign HDMI_TX_DE = ~blank;`  
+* You could try the following code  (not tested myself):
+
+```
+assign oVGA_DE    = ((H_Cont >= (H_SYNC+H_BACK)) && (H_Cont < (H_SYNC+H_BACK+H_ACT))) && ((V_Cont >= (V_SYNC+V_BACK)) && (V_Cont < (V_SYNC+V_BACK+V_ACT))) ? 1'b1:1'b0;
+```
+
+
+
+
