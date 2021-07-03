@@ -21,7 +21,7 @@ Others:
 
 * For HDMI video only check this [commit.](https://github.com/SoCFPGA-learning/DECA/commit/92364bb4a4172e98cee600806a3487ae718511b1)
 * HDMI examples from [Deca's Terasic Resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=&No=944&PartNo=4).
-* ADV7513-Based Video Generators application note https://www.analog.com/media/en/technical-documentation/application-notes/AN-1270.pdf
+* ADV7513-Based Video Generators application note https://www.analog.com/media/en/technical-documentation/application-notes/AN-1270.pdf (Note: register script is full of typos. Don't trust it)
 * Test for video output using the ADV7513 chip on a de10 nano board  https://github.com/nhasbun/de10nano_vgaHdmi_chip.  Includes programing and reference guide for ADV7513 chip.
 * HDMI video (ADV7513) https://github.com/chriz2600/DreamcastHDMI/tree/develop/Core/source/adv7513
 
