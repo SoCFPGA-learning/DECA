@@ -12,7 +12,7 @@
 // Target Devices: 
 // Tool versions: 
 // Description: 
-// Origin:                  Deca Neptuno board test
+// Origin:         Deca Neptuno board test
 //
 // Dependencies: 
 //
@@ -91,7 +91,7 @@ module vga_scandoubler (
     
     // Recorro el scanbuffer al doble de velocidad, generando direcciones para
     // el scan buffer. Cada vez que el video original ha terminado una linea,
-    // cambio de mitad de buffer. Cuando termino de recorrerlo pero a�n no
+    // cambio de mitad de buffer. Cuando termino de recorrerlo pero aún no
     // estoy en un retrazo horizontal, simplemente vuelvo a recorrer el scan buffer
     // desde el mismo origen
     // Cada vez que termino de recorrer el scan buffer basculo "scaneffect" que

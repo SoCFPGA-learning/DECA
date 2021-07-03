@@ -1,4 +1,4 @@
-# Pooyan DECA port  v4
+# Pooyan DECA port 
 
 DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https://sourceforge.net/projects/darfpga/files/Software%20VHDL/pooyan/
 
@@ -12,6 +12,8 @@ DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https:
 - v2 Added scandoubler. Now should work in any VGA monitor.
 - v3 Added HDMI video output as well.
 - v4 Added audio by HDMI and Line out jack
+- v5 changed HDMI video clock for compatibility
+- v6 commented VGA output and PWM audio
 
 **External requeriments:**
 
@@ -28,20 +30,6 @@ DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https:
 ### STATUS
 
 * Working
-
-Required ROMs (Not included)
------------------------------
-
-You need the following 13 ROMs binary files from pooyan.zip (MAME)
-
-1.4a, 2.5a, 3.6a, 4.7a 
-xx.7a, xx.8a
-6.9a, 5.8a, 8.10g, 7.9g 
-pooyan.pr1, pooyan.pr3, pooyan.pr2 
-
-
-
-**See tools below to generate the VHDL files from ROMs.**
 
 
 
@@ -118,13 +106,11 @@ Use at your own risk
 
 ---------------------------------------------------------------------------------
 --
-
 Uses 1 pll for 12MHz and 14MHz generation from 50MHz
-
+--
 Board key :
-
   0 : reset game
-
+--
 Keyboard players inputs :
 --
   F3 : Add coin
@@ -134,9 +120,8 @@ Keyboard players inputs :
   RIGHT arrow : right
   LEFT  arrow : left
   UP    arrow : up 
-
   DOWN  arrow : down
-
+--
 Other details : see pooyan.vhd
 
 ---------------------------------------------------------------------------------
