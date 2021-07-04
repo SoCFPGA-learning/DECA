@@ -34,9 +34,9 @@ DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https:
 
 ### Keyboard players inputs :
 
-F3 : Add coin
-F2 : Start 2 players
-F1 : Start 1 player
+F1 : Add coin
+F2 : Start 1 player
+F3 : Start 2 players
 SPACE       : Fire  
 RIGHT arrow : right
 LEFT  arrow : left
