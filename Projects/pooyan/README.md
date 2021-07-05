@@ -21,7 +21,6 @@ DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https:
   * P9:11 PS2CLK 
   * P9:12 PS2DAT 
 
-
 **Others:**
 
 * Button KEY0 is a reset button
@@ -29,8 +28,7 @@ DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https:
 ### STATUS
 
 * Working
-
-
+* HDMI video output tested on various monitors (25% users could not see video output)
 
 ### Keyboard players inputs :
 
