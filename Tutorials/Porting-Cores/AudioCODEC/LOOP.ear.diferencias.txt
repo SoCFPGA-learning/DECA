@@ -1,5 +1,5 @@
-Resumen de Registros en el LOOP de carlos (LOOP.ear) que no 
-aparecen en el de somhic (LOOP.LineOut) o que cambian de valor:
+Resumen de Registros en el LOOP con Ear (LOOP.ear.hex) que no 
+aparecen en el de Line Out (LOOP.LineOut.v1.hex) o que cambian de valor:
 ===============================================================
 
 Cambios importantes del LOOP.ear:
@@ -18,7 +18,7 @@ Note: DRC only active if a PRB_Px has been selected that supports DRC
 45 08 DRC Control Register 2  0001: DRC Hold Time = 32 DAC Word Clocks
 46 FF DRC Control Register 3  DRC Attack Rate = 1.2207e-4dB per DAC Word Clock;  DRC Decay Rate = 4.7683e-7dB per DAC Word Clock
 
-- Registros con valores diferentes:			carlos (ear)	somhic (line out)
+- Registros con valores diferentes:			(ear)		(line out.v1)
 
 3C Set the DAC Mode to					02 PRB_P2	01 PRB_P1	
 3F DAC Channel Volume Control's Soft-Step control 	D5 01: 2 DAC	D4 00: 1 DAC    Soft-Stepping is 1 step per X DAC Word Clocks
@@ -35,7 +35,7 @@ Note: DRC only active if a PRB_Px has been selected that supports DRC
 REGISTROS DE LA PÁGINA 1:
 
 
-- Registros con valores diferentes:			carlos (ear)				somhic (line out)
+- Registros con valores diferentes:			(ear)					(line out.v1)
 
 02 LDO Control Register				C9 pero luego vuelve a 01		01	
 09 Output Driver Power Control Register	x	0C only LOL/LOR powered up		FF  Power up all drivers
