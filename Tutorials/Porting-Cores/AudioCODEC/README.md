@@ -22,13 +22,12 @@ FPGA is listed in Table 3-10. (extract from DECA user manual)
 Rename your desired configuration to LOOP.hex.
 
 * I2S serial data routed to line out connector (LOL/R)  
-  * [LOOP.LineOut.hex](LOOP.LineOut.hex) 
-  * [LOOP.LineOut.explained.txt](LOOP.LineOut.explained.txt) 
+  * [LOOP.LineOut.v1.hex](LOOP.LineOut.v1.hex) ([commented](LOOP.LineOut.v1.explained.txt))
+  * [LOOP.LineOut.v2.hex](LOOP.LineOut.v2.hex) ([commented](LOOP.LineOut.v2.explained.txt))
 * I2S serial data routed to line out connector (LOL/R)  & EAR pin through MAX10 ADC
   * [LOOP.ear.hex](LOOP.ear.hex)
 * Line In routed to Line out connector
-  * [LOOP.DECAAUDIO.hex](LOOP.DECAAUDIO.hex) 
-  * [LOOP.DECAAUDIO.explained.txt](LOOP.DECAAUDIO.explained.txt) 
+  * [LOOP.DECAAUDIO.hex](LOOP.DECAAUDIO.hex) ([commented](LOOP.DECAAUDIO.explained.txt)) 
 
 ### Adapting cores with I2S output to work with Audio CODEC
 

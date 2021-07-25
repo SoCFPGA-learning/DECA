@@ -3,6 +3,10 @@ and modified to output to Line out (LOL/R) instead of headphone output (HPL/R).
 
 See Register description in TLV320AIC3254 Application Reference Guide 
 
+v1 initial release
+
+
+
 # Initialize to Page 0
 00 00	
 # Initialize the device through software reset
