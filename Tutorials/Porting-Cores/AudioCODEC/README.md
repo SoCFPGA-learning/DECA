@@ -25,7 +25,7 @@ Rename your desired configuration to LOOP.hex.
   * [LOOP.LineOut.v1.hex](LOOP.LineOut.v1.hex) ([commented](LOOP.LineOut.v1.explained.txt))
   * [LOOP.LineOut.v2.hex](LOOP.LineOut.v2.hex) ([commented](LOOP.LineOut.v2.explained.txt))
 * I2S serial data routed to line out connector (LOL/R)  & EAR pin through MAX10 ADC
-  * [LOOP.ear.hex](LOOP.ear.hex)
+  * [LOOP.ear.hex](LOOP.ear.hex) ([diferencias comentadas](LOOP.ear.diferencias.txt))
 * Line In routed to Line out connector
   * [LOOP.DECAAUDIO.hex](LOOP.DECAAUDIO.hex) ([commented](LOOP.DECAAUDIO.explained.txt)) 
 
