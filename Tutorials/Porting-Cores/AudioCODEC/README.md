@@ -22,8 +22,8 @@ FPGA is listed in Table 3-10. (extract from DECA user manual)
 Rename your desired configuration to LOOP.hex.
 
 * I2S serial data routed to line out connector (LOL/R)  
-  * [LOOP.LineIn.hex](LOOP.LineIn.hex) 
-  * [LOOP.LineIn.explained.txt](LOOP.LineIn.explained.txt) 
+  * [LOOP.LineOut.hex](LOOP.LineOut.hex) 
+  * [LOOP.LineOut.explained.txt](LOOP.LineOut.explained.txt) 
 * I2S serial data routed to line out connector (LOL/R)  & EAR pin through MAX10 ADC
   * [LOOP.ear.hex](LOOP.ear.hex)
 * Line In routed to Line out connector
