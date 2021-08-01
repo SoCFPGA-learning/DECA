@@ -23,11 +23,11 @@ Rename your desired configuration to LOOP.hex.
 
 * I2S serial data routed to line out connector (LOL/R)  
   * [LOOP.LineOut.v1.hex](LOOP.LineOut.v1.hex) ([commented](LOOP.LineOut.v1.explained.txt))
-  * [LOOP.LineOut.v2.hex](LOOP.LineOut.v2.hex) ([commented](LOOP.LineOut.v2.explained.txt)) (LOOP.hex used in next point)
 * I2S serial data routed to line out connector (LOL/R)  & EAR pin through MAX10 ADC
+  * [LOOP.LineOut.v2.hex](LOOP.LineOut.v2.hex) ([commented](LOOP.LineOut.v2.explained.txt)) (LOOP.hex used for current projects)
   * [LOOP.ear.hex](LOOP.ear.hex) ([diferencias comentadas](LOOP.ear.diferencias.txt))
 * Line In routed to Line out connector
-  * [LOOP.DECAAUDIO.hex](LOOP.DECAAUDIO.hex) ([commented](LOOP.DECAAUDIO.explained.txt)) 
+  * [LOOP.DECAAUDIO.hex](LOOP.DECAAUDIO.hex) ([commented](LOOP.DECAAUDIO.explained.txt)) (output is very noisy)
 
 ### Adapting cores with I2S output to work with Audio CODEC
 
@@ -35,20 +35,21 @@ The following implementation uses SPI communication (Max10 master, AIC3254 slave
 
 The original code comes from "adc_mic" example from [Terasic's Max10 plus board resource CD](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=218&No=1223&PartNo=4) (It can also be found in this [fm-transmitter project](https://github.com/natanvotre/fm-transmitter/tree/master/src)).
 
-**Add following files to a folder named "audio" inside Quartus project folder**
+**Add following files to a folder named "rtl_deca/audio" inside Quartus project folder**
 
-* [AUDIO_SPI_CTL_RD.v](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48/deca/AUDIO_SPI_CTL_RD.v) sends configuration registers and its data to the AIC3254
-
-* [SPI_RAM.v](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48/deca/SPI_RAM.v) loads configuration file "LOOP.hex" to RAM
-* [LOOP.hex](LOOP.hex) contains all the register number and data associated for configuring the Audio CODEC. This one uses I2S serial data bus routed to the line out connector (LOL/R). See Register configurations for other examples.
+* [AUDIO_SPI_CTL_RD.v](../rtl_deca/audio/AUDIO_SPI_CTL_RD.v) sends configuration registers and its data to the AIC3254
+* [SPI_RAM.v](../rtl_deca/audio/SPI_RAM.v) loads configuration file "LOOP.hex" to RAM
+* [LOOP.hex](../rtl_deca/audio/LOOP.hex) contains all the register number and data associated for configuring the Audio CODEC. This one uses I2S serial data bus routed to the line out connector (LOL/R). See Register configurations for other examples.
+*  [i2s_transmitter.vhd](../rtl_deca/audio/i2s_transmitter.vhd) is a module to transform audio samples to serialized I2S output.
 
 **Modify QSF file**
 
 * Add Verilog files:
 
 ```
-set_global_assignment -name audio/VERILOG_FILE AUDIO_SPI_CTL_RD.v
-set_global_assignment -name audio/VERILOG_FILE SPI_RAM.v
+set_global_assignment -name VERILOG_FILE rtl_deca/audio/AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE rtl_deca/audio/SPI_RAM.v
+set_global_assignment -name VHDL_FILE rtl_deca/audio/i2s_transmitter.vhd
 ```
 
 * Replace the I2S Pins from the original core with the DECA ones:
@@ -84,26 +85,10 @@ In the module code add and adapt this code with your own "reset" signal and a 50
 
 ```verilog
 //--RESET DELAY ---  
-   reg RESET_DELAY_n;
-   reg   [31:0]  DELAY_CNT;   
-
-	always @(negedge reset ) begin 
-	if ( reset )  begin 
-			RESET_DELAY_n <= 0;
-			DELAY_CNT   <= 0;
-		end 
-	else  begin 
-			if ( DELAY_CNT < 32'hfffff  )  
-				DELAY_CNT <= DELAY_CNT+1; 
-			else 
-				RESET_DELAY_n <= 1;
-		end
-	end
+	// In example code above there is a complete delay code but haven't seen benefit on using it yet
+	wire   RESET_DELAY_n;
+	assign RESET_DELAY_n = ~reset;
 	
-// The previous code was in the original Terasic example. I tested without it and it also works. In case you don't want previous block of code just insert the following line:
-// assign RESET_DELAY_n = ~reset;
-
-
 	// Audio DAC DECA Output assignments
     assign AUDIO_GPIO_MFP5  = 1;  // GPIO
     assign AUDIO_SPI_SELECT = 1;  // SPI mode
@@ -143,7 +128,35 @@ i2s I2S
 
 If your original core does not have I2S output but just PWM audio, you will have to look at the sound module of the core and get the sample data and adapt it to a 16 bit signal.  
 
-Follows and example in VHDL. The original audio signal was 11 bit long.
+Follows an instantiatiation to the [i2s_transmitter.vhd](../rtl_deca/audio/i2s_transmitter.vhd) module privided, assuming the sample audio is already 16 bit long:
+
+```
+// I2S interface audio
+i2s_transmitter 
+#(
+	//.mclk_rate( 21428571 ),
+	.sample_rate( 48000 )	
+)
+i2s_transmitter_dut (
+	.clock_i 	 (max10_clk1_50 ),
+	.reset_i 	 (reset ),
+	.pcm_l_i 	 (sample >> 2 ),		// each right displacement reduces volume to half
+	.pcm_r_i 	 (sample >> 2 ),
+	.i2s_mclk_o  (i2sMck ),
+	.i2s_lrclk_o (i2sLr ),
+	.i2s_bclk_o  (i2sSck ),
+	.i2s_d_o     (i2sD )
+);
+
+```
+
+
+
+i2s_transmitter module just needs a 50 MHz clock and outputs all the clocks for the I2S withot having to deal with additional PLLs.
+
+
+
+Follows another example in VHDL. The original audio signal was 11 bit long. In this example the i2sSck and i2sLr clocks are generated in a PLL.
 
 ```vhdl
 -- DECA AUDIO CODEC I2S DATA

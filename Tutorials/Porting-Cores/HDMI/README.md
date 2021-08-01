@@ -33,11 +33,11 @@ The original code comes from "HDMI_TX" example from [Deca's Terasic Resource CD]
 
 
 
-**Add following files to a folder named "hdmi" inside Quartus project folder**
+**Add following files to a folder named "rtl_deca/hdmi" inside Quartus project folder**
 
-* [I2C_HDMI_Config.v](https://github.com/SoCFPGA-learning/DECA/raw/main/Projects/zx48_hdmi/deca/rtl/hdmi/I2C_HDMI_Config.v) Send configuration parameters to the ADV7513 chip through I2C
+* [I2C_HDMI_Config.v](../rtl_deca/hdmi/I2C_HDMI_Config.v) Send configuration parameters to the ADV7513 chip through I2C
 
-* [I2C_Controller.v](https://github.com/SoCFPGA-learning/DECA/raw/main/Projects/zx48_hdmi/deca/rtl/hdmi/I2C_Controller.v) I2C protocol controller
+* [I2C_Controller.v](../rtl_deca/hdmi/I2C_Controller.v) I2C protocol controller
 
   
 
@@ -46,8 +46,8 @@ The original code comes from "HDMI_TX" example from [Deca's Terasic Resource CD]
 * Add Verilog files:
 
 ```
-set_global_assignment -name VERILOG_FILE hdmi/I2C_Controller.v
-set_global_assignment -name VERILOG_FILE hdmi/I2C_HDMI_Config.v
+set_global_assignment -name VERILOG_FILE rtl_deca/hdmi/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE rtl_deca/hdmi/I2C_HDMI_Config.v
 ```
 
 * Add additional PIN assignments for the HDMI. Check HDMI-TX section in this [template](https://github.com/SoCFPGA-learning/DECA/blob/main/Projects/zx48_hdmi/deca/zx48.qsf).
@@ -108,7 +108,7 @@ For audio, signals i2sMck, i2sSck, i2sLr, i2sD should come from an I2S module fr
 For video, data enable signal (HDMI_TX_DE) might not be present in your core but should be easy to adapt:
 
 * If you have the blank signal, try  `assign HDMI_TX_DE = ~blank;`  
-* You could try also the following code  (not tested myself):
+* You could try also the following code  (not tested yet by myself):
 
 ```
 assign oVGA_DE    = ((H_Cont >= (H_SYNC+H_BACK)) && (H_Cont < (H_SYNC+H_BACK+H_ACT))) && ((V_Cont >= (V_SYNC+V_BACK)) && (V_Cont < (V_SYNC+V_BACK+V_ACT))) ? 1'b1:1'b0;
