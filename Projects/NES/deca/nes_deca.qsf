@@ -1,0 +1,560 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+# Date created = 21:03:07  May 26, 2021
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		tld_test_placa_deca_neptuno_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C6GES
+set_global_assignment -name TOP_LEVEL_ENTITY nes_deca
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:03:07  MAY 26, 2021"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+
+#set_global_assignment -name SEED 3
+
+
+###################################
+######    PIN ASSIGNMENTS    ######
+###################################
+
+# clock
+set_location_assignment PIN_M8 -to max10_clk1_50
+
+# key0 reset
+set_location_assignment PIN_H21 -to key0
+set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to key0
+#set_location_assignment PIN_H22 -to key1
+#set_instance_assignment -name IO_STANDARD "1.5 V SCHMITT TRIGGER" -to key1
+
+# LEDs
+set_location_assignment PIN_C7 -to led[0]
+set_location_assignment PIN_C8 -to led[1]
+set_location_assignment PIN_A6 -to led[2]
+set_location_assignment PIN_B7 -to led[3]
+set_location_assignment PIN_C4 -to led[4]
+set_location_assignment PIN_A5 -to led[5]
+set_location_assignment PIN_B4 -to led[6]
+set_location_assignment PIN_C5 -to led[7]
+
+# PS2 keyboard input  # Teclado (P9:11,12 GPIO1_D0/1) 
+set_location_assignment PIN_Y5 -to ps2_clk_io
+set_location_assignment PIN_Y6 -to ps2_data_io
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ps2_clk_io
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ps2_data_io
+
+# VGA video output
+set_location_assignment PIN_V10 -to vga_b_o[0]
+set_location_assignment PIN_AA6 -to vga_b_o[1]
+set_location_assignment PIN_AB6 -to vga_b_o[2]
+set_location_assignment PIN_AB7 -to vga_g_o[0]
+set_location_assignment PIN_R11 -to vga_g_o[1]
+set_location_assignment PIN_V7 -to vga_g_o[2]
+set_location_assignment PIN_U7 -to vga_r_o[0]
+set_location_assignment PIN_Y7 -to vga_r_o[1]
+set_location_assignment PIN_AA7 -to vga_r_o[2]
+set_location_assignment PIN_W6 -to vga_vsync_n_o
+set_location_assignment PIN_W7 -to vga_hsync_n_o
+
+# Audio pwm output (P9:29,30 GPIO1_D18/19) (Atlas board: T12_left 1, 2 gnd, 3 R11_right)
+set_location_assignment PIN_R9 -to dac_l_o
+set_location_assignment PIN_W4 -to dac_r_o
+
+# MicroSD Card
+set_location_assignment PIN_T20 -to sd_sclk_o
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_sclk_o
+set_location_assignment PIN_T21 -to sd_mosi_o
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_mosi_o
+set_location_assignment PIN_U22 -to SD_CMD_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_CMD_DIR
+set_location_assignment PIN_T22 -to SD_D0_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_D0_DIR
+set_location_assignment PIN_U21 -to SD_D123_DIR
+set_instance_assignment -name IO_STANDARD "1.5 V" -to SD_D123_DIR
+set_location_assignment PIN_R18 -to sd_miso_i
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_miso_i
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sd_miso_i
+set_location_assignment PIN_R20 -to sd_cs_n_o
+set_instance_assignment -name IO_STANDARD "1.5 V" -to sd_cs_n_o
+set_location_assignment PIN_P13 -to SD_SEL
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD_SEL
+
+# Audio CODEC TLV320AIC3254
+set_location_assignment PIN_R14 -to i2sSck
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sSck
+set_location_assignment PIN_P15 -to i2sD
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sD
+set_location_assignment PIN_M22 -to AUDIO_GPIO_MFP5
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_GPIO_MFP5
+set_location_assignment PIN_P14 -to i2sMck
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sMck
+set_location_assignment PIN_N21 -to AUDIO_MISO_MFP4
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_MISO_MFP4
+set_location_assignment PIN_M21 -to AUDIO_RESET_n
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_RESET_n
+set_location_assignment PIN_P19 -to AUDIO_SCLK_MFP3
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SCLK_MFP3
+set_location_assignment PIN_P20 -to AUDIO_SCL_SS_n
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SCL_SS_n
+set_location_assignment PIN_P21 -to AUDIO_SDA_MOSI
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SDA_MOSI
+set_location_assignment PIN_N22 -to AUDIO_SPI_SELECT
+set_instance_assignment -name IO_STANDARD "1.5 V" -to AUDIO_SPI_SELECT
+set_location_assignment PIN_R15 -to i2sLr
+set_instance_assignment -name IO_STANDARD "1.5 V" -to i2sLr
+
+
+# HDMI-TX
+set_location_assignment PIN_C10 -to HDMI_I2C_SCL
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2C_SCL
+set_location_assignment PIN_B15 -to HDMI_I2C_SDA
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2C_SDA
+set_location_assignment PIN_A9 -to HDMI_I2S[0]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2S[0]
+set_location_assignment PIN_A11 -to HDMI_I2S[1]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2S[1]
+set_location_assignment PIN_A8 -to HDMI_I2S[2]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2S[2]
+set_location_assignment PIN_B8 -to HDMI_I2S[3]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_I2S[3]
+set_location_assignment PIN_A10 -to HDMI_LRCLK
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_LRCLK
+set_location_assignment PIN_A7 -to HDMI_MCLK
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_MCLK
+set_location_assignment PIN_D12 -to HDMI_SCLK
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_SCLK
+set_location_assignment PIN_A20 -to HDMI_TX_CLK
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_CLK
+set_location_assignment PIN_C18 -to HDMI_TX_D[0]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[0]
+set_location_assignment PIN_D17 -to HDMI_TX_D[1]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[1]
+set_location_assignment PIN_C17 -to HDMI_TX_D[2]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[2]
+set_location_assignment PIN_C19 -to HDMI_TX_D[3]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[3]
+set_location_assignment PIN_D14 -to HDMI_TX_D[4]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[4]
+set_location_assignment PIN_B19 -to HDMI_TX_D[5]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[5]
+set_location_assignment PIN_D13 -to HDMI_TX_D[6]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[6]
+set_location_assignment PIN_A19 -to HDMI_TX_D[7]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[7]
+set_location_assignment PIN_C14 -to HDMI_TX_D[8]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[8]
+set_location_assignment PIN_A17 -to HDMI_TX_D[9]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[9]
+set_location_assignment PIN_B16 -to HDMI_TX_D[10]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[10]
+set_location_assignment PIN_C15 -to HDMI_TX_D[11]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[11]
+set_location_assignment PIN_A14 -to HDMI_TX_D[12]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[12]
+set_location_assignment PIN_A15 -to HDMI_TX_D[13]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[13]
+set_location_assignment PIN_A12 -to HDMI_TX_D[14]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[14]
+set_location_assignment PIN_A16 -to HDMI_TX_D[15]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[15]
+set_location_assignment PIN_A13 -to HDMI_TX_D[16]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[16]
+set_location_assignment PIN_C16 -to HDMI_TX_D[17]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[17]
+set_location_assignment PIN_C12 -to HDMI_TX_D[18]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[18]
+set_location_assignment PIN_B17 -to HDMI_TX_D[19]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[19]
+set_location_assignment PIN_B12 -to HDMI_TX_D[20]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[20]
+set_location_assignment PIN_B14 -to HDMI_TX_D[21]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[21]
+set_location_assignment PIN_A18 -to HDMI_TX_D[22]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[22]
+set_location_assignment PIN_C13 -to HDMI_TX_D[23]
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_D[23]
+set_location_assignment PIN_C9 -to HDMI_TX_DE
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_DE
+set_location_assignment PIN_B11 -to HDMI_TX_HS
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_HS
+set_location_assignment PIN_B10 -to HDMI_TX_INT
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_INT
+set_location_assignment PIN_C11 -to HDMI_TX_VS
+set_instance_assignment -name IO_STANDARD "1.8 V" -to HDMI_TX_VS
+
+
+### SDRAM
+set_location_assignment PIN_Y17 -to SDRAM_A[0]
+set_location_assignment PIN_W14 -to SDRAM_A[1]
+set_location_assignment PIN_U15 -to SDRAM_A[2]
+set_location_assignment PIN_R13 -to SDRAM_A[3]
+set_location_assignment PIN_Y13 -to SDRAM_A[4]
+set_location_assignment PIN_AB11 -to SDRAM_A[5]
+set_location_assignment PIN_AA11 -to SDRAM_A[6]
+set_location_assignment PIN_AB12 -to SDRAM_A[7]
+set_location_assignment PIN_AA12 -to SDRAM_A[8]
+set_location_assignment PIN_AB13 -to SDRAM_A[9]
+set_location_assignment PIN_V14 -to SDRAM_A[10]
+set_location_assignment PIN_AA13 -to SDRAM_A[11]
+set_location_assignment PIN_AB14 -to SDRAM_A[12]
+
+set_location_assignment PIN_AA20 -to SDRAM_DQ[0]
+set_location_assignment PIN_AA19 -to SDRAM_DQ[1]
+set_location_assignment PIN_AB21 -to SDRAM_DQ[2]
+set_location_assignment PIN_AB20 -to SDRAM_DQ[3]
+set_location_assignment PIN_AB19 -to SDRAM_DQ[4]
+set_location_assignment PIN_Y16 -to SDRAM_DQ[5]
+set_location_assignment PIN_V16 -to SDRAM_DQ[6]
+set_location_assignment PIN_AB18 -to SDRAM_DQ[7]
+set_location_assignment PIN_AA15 -to SDRAM_DQ[8]
+set_location_assignment PIN_Y14 -to SDRAM_DQ[9]
+set_location_assignment PIN_W15 -to SDRAM_DQ[10]
+set_location_assignment PIN_AB15 -to SDRAM_DQ[11]
+set_location_assignment PIN_W16 -to SDRAM_DQ[12]
+set_location_assignment PIN_AB16 -to SDRAM_DQ[13]
+set_location_assignment PIN_V15 -to SDRAM_DQ[14]
+set_location_assignment PIN_W17 -to SDRAM_DQ[15]
+
+# CKE not connected on XS 2.2/2.4.
+set_location_assignment PIN_AA16 -to SDRAM_CKE
+set_location_assignment PIN_AA14 -to SDRAM_CLK
+set_location_assignment PIN_W12 -to SDRAM_nCAS
+set_location_assignment PIN_W11 -to SDRAM_nRAS
+set_location_assignment PIN_AB10 -to SDRAM_nWE
+set_location_assignment PIN_V12 -to SDRAM_nCS
+
+set_location_assignment PIN_V11 -to SDRAM_BA[0]
+set_location_assignment PIN_V13 -to SDRAM_BA[1]
+
+# DQML/DQMH not connected on XS 2.2/2.4
+set_location_assignment PIN_Y11 -to SDRAM_DQML
+set_location_assignment PIN_W13 -to SDRAM_DQMH
+###
+
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[0]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[1]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[2]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[3]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[4]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[5]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[6]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[7]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[8]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[9]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[10]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[11]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[12]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[13]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[14]
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to SDRAM_DQ[15]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[4]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[5]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[6]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[7]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[8]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[9]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[10]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[11]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_A[12]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[4]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[5]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[6]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[7]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[8]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[9]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[10]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[11]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[12]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[13]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[14]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQ[15]
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQML
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_DQMH
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_nRAS
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_nCAS
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to SDRAM_nWE
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[0]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[1]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[2]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[3]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[4]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[5]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[6]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[7]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[8]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[9]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[10]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[11]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[12]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[13]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[14]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to SDRAM_DQ[15]
+
+
+###################################
+
+set_global_assignment -name SYSTEMVERILOG_FILE nes_deca.sv
+set_global_assignment -name SDC_FILE nes_deca.sdc
+set_global_assignment -name VHDL_FILE spram.vhd
+set_global_assignment -name VERILOG_FILE sigma_delta_dac.v
+set_global_assignment -name QIP_FILE max10_pll.qip
+set_global_assignment -name VHDL_FILE kbd_joystick.vhd
+set_global_assignment -name VHDL_FILE io_ps2_keyboard.vhd
+set_global_assignment -name QIP_FILE fifo_loader.qip
+
+set_global_assignment -name VHDL_FILE ../t65/T65_Pack.vhd
+set_global_assignment -name VHDL_FILE ../t65/T65_MCode.vhd
+set_global_assignment -name VHDL_FILE ../t65/T65_ALU.vhd
+set_global_assignment -name VHDL_FILE ../t65/T65.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/voicerom.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/voicememory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/temporalmixer.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/slotcounter.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/sinetable.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/registermemory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/phasememory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/phasegenerator.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/outputmemory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/outputgenerator.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/opll.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/operator.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/lineartable.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/feedbackmemory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/envelopememory.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/envelopegenerator.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/controller.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/attacktable.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/VM2413/vm2413.vhd
+set_global_assignment -name VHDL_FILE ../sound/OPLL/eseopll.vhd
+
+set_global_assignment -name SYSTEMVERILOG_FILE ../sys/hq2x.sv
+set_global_assignment -name VERILOG_FILE ../sys/scandoubler.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../sys/video_mixer.sv
+
+set_global_assignment -name VERILOG_FILE ../mappers/mapLoopy.v
+
+set_global_assignment -name VHDL_FILE ../CtrlModule/ZPUFlex/RTL/zpupkg.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/ZPUFlex/RTL/zpu_core_flex.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/spi.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/OSD_Overlay.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/OnScreenDisplay.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/io_ps2_com.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/interrupt_controller.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/DualPortRAM_2RW_1Clock_Unreg.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/RTL/CtrlModule.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/CharROM/CharROM_ROM.vhd
+set_global_assignment -name VHDL_FILE ../CtrlModule/CtrlModule/Firmware/CtrlROM_ROM.vhd
+
+set_global_assignment -name SYSTEMVERILOG_FILE sdram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../EEPROM_24C0x.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../ppu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../video.sv
+set_global_assignment -name VERILOG_FILE ../nes.v
+set_global_assignment -name VERILOG_FILE ../mmu.v
+set_global_assignment -name VERILOG_FILE ../dsp.v
+set_global_assignment -name VHDL_FILE ../dpram.vhd
+set_global_assignment -name VERILOG_FILE ../compat.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../apu.sv
+
+set_global_assignment -name QIP_FILE rtl_deca/pll/pll.qip
+
+set_global_assignment -name VERILOG_FILE rtl_deca/audio/AUDIO_SPI_CTL_RD.v
+set_global_assignment -name VERILOG_FILE rtl_deca/audio/SPI_RAM.v
+set_global_assignment -name VHDL_FILE rtl_deca/audio/i2s_transmitter.vhd
+
+set_global_assignment -name VERILOG_FILE rtl_deca/hdmi/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE rtl_deca/hdmi/I2C_HDMI_Config.v
+
+#####################
+
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+#####################   SIGNALTAP BEGIN
+
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp2.stp
+set_global_assignment -name SIGNALTAP_FILE stp2.stp
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "max10_pll:pll|altpll:altpll_component|max10_pll_altpll:auto_generated|clk[0]" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=8192" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=8192" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to HDMI_TX_DE -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to HDMI_TX_D[0] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to HDMI_TX_D[10] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to HDMI_TX_D[11] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to HDMI_TX_D[12] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to HDMI_TX_D[13] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to HDMI_TX_D[14] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to HDMI_TX_D[15] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to HDMI_TX_D[16] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to HDMI_TX_D[17] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to HDMI_TX_D[18] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to HDMI_TX_D[19] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to HDMI_TX_D[1] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to HDMI_TX_D[20] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to HDMI_TX_D[21] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to HDMI_TX_D[22] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to HDMI_TX_D[23] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to HDMI_TX_D[2] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to HDMI_TX_D[3] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to HDMI_TX_D[4] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to HDMI_TX_D[5] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to HDMI_TX_D[6] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to HDMI_TX_D[7] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to HDMI_TX_D[8] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to HDMI_TX_D[9] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to HDMI_TX_HS -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to HDMI_TX_VS -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to key0 -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to reset_nes -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "video:video|ce_pix" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to HDMI_TX_DE -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to HDMI_TX_D[0] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to HDMI_TX_D[10] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to HDMI_TX_D[11] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to HDMI_TX_D[12] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to HDMI_TX_D[13] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to HDMI_TX_D[14] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to HDMI_TX_D[15] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to HDMI_TX_D[16] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to HDMI_TX_D[17] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to HDMI_TX_D[18] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to HDMI_TX_D[19] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to HDMI_TX_D[1] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to HDMI_TX_D[20] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to HDMI_TX_D[21] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to HDMI_TX_D[22] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to HDMI_TX_D[23] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to HDMI_TX_D[2] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to HDMI_TX_D[3] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to HDMI_TX_D[4] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to HDMI_TX_D[5] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to HDMI_TX_D[6] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to HDMI_TX_D[7] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to HDMI_TX_D[8] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to HDMI_TX_D[9] -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to HDMI_TX_HS -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to HDMI_TX_VS -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to key0 -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to reset_nes -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "video:video|ce_pix" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=30" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=30" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=30" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100011101111111111" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=117" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+
+
+#####################   SIGNALTAP END
+
+
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/stp2_auto_stripped.stp
