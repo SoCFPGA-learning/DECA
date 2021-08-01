@@ -45,7 +45,8 @@ See [VGA conversion from 666 to 333](VGA333/README.md)
 
 ### SDRAM
 
-* Do not define GPIO pins as 3.3V.  Works best with Quartus 17.1 defaults: 2.5 V, 12 mA
+* Using 3.3V power supply from DECA, do not define GPIO pins as 3.3V.  Works best with Quartus 17.1 defaults: 2.5 V, 12 mA
+* If you use and external power supply for 3V3 then SDRAM pins can be safely defined as 3V3.
 * Use Fast registers used in memtest example (see [qsf file](https://github.com/SoCFPGA-learning/DECA/raw/main/Projects/MemTest_Mister/synth/DECA/memtest_deca.qsf))
 
 
