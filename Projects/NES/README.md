@@ -60,6 +60,27 @@ DECA Top level for NES by Somhic (16/07/21) adapted from DE10_lite port by Dar (
 
 
 
+### Changing how the core works
+
+* HDMI output is 1026x480 because I had to double pixel clock to make it work in my monitor. I suggest you try changing following line in top project file nes_deca.sv to have a proper resolution of 513x480
+
+  ```verilog
+  assign HDMI_TX_CLK = clk;    // clk instead of clock_vga
+  ```
+
+  
+
+* Audio volume. If maximum volume it's too low for you try changing following line in top project file nes_deca.sv:
+
+  ```verilog
+  .pcm_l_i 	 (sample >> 1 ),		// each right displacement reduces volume to half
+  .pcm_r_i 	 (sample >> 1 ),		// 1 instead of 2 for higher volume
+  ```
+
+
+
+After any change compile again in Quartus to generate a new bitstream. I used Quartus 17.1.
+
 ### Additional comments
 
 See comments from DAR original port in top level file nes_deca.sv
