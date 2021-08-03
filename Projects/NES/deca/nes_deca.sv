@@ -18,9 +18,12 @@
 //		 Activaded dipswitches[2] but then no video output in both vga & hdmi
 //		 Code cleanup
 // v4.8  shifted sample >>2 to reduce volume
-//		 added SignalTap to check signals
+//		 added SIGNALTAP to check signals
 //		 reset_nes = 1 until first loaded rom because of !loader_done, changed reset of HDMI initialization to key0
-//
+//		 HDMI output now works after bootup
+// v4.9  SignalTap disabled in qsf file
+// 	     SDRAM clkref syncronization signal enabled in sdram.v (haven't seen any benefit of it yet)
+//			
 //
 // ---------------------------------------------------------------------------
 // fpganes DE10-Lite port by Dar (darfpga@aol.fr) (http://darfpga.blogspot.fr)
@@ -523,6 +526,7 @@ assign vga_b_o = vga_osd_b[7:5];
 // PLL FOR DECA AUDIO CODEC & HDMI 
 
 /*
+// pll used only for testings
 wire clock_vga2;
 wire clock_locked2;
 pll pll2 (
@@ -547,6 +551,7 @@ I2C_HDMI_Config u_I2C_HDMI_Config (
 //  HDMI VIDEO
 assign HDMI_TX_CLK = clock_vga;    
 //OK LG: clk=21.43, CE_PIXEL=21.43   //OK BENQ: clk85    //OK BOTH: clock_vga at 42.857 MHz
+//NO OK BENQ:   clk=21.43 -45, -90º, -180º, -270
 //At 26.75 MHz outputs HDMI 640x480 but with flickering. It does not start OSD anyway
 assign HDMI_TX_DE = VGA_DE;
 assign HDMI_TX_HS = !VGA_HS;   

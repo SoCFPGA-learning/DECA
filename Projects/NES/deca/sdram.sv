@@ -83,21 +83,6 @@ localparam STATE_CONT  = STATE_START+RASCAS_DELAY;		// 1 + 2 = 3
 localparam STATE_READY = STATE_CONT+CAS_LATENCY+2'd2;   // 3 + 2 + 2 = 7
 localparam STATE_LAST  = STATE_READY;      				// 7, last state in cycle
 
-
-//////////////////////////  from sdram.v de10_lite port      (NOT TESTED, IT SEEMS NOT TO BE REQUIRED)
-/*
-always @(posedge clk) begin
-   // SDRAM (state machine) clock is 85MHz. Synchronize this to systems 21.477 Mhz clock
-   // force counter to pass state LAST->FIRST exactly after the rising edge of clkref
-   if(((state == STATE_LAST) && ( clkref == 1)) ||			
-		((state == STATE_IDLE) && ( clkref == 0)) ||			//  STATE_FIRST substituted by STATE_IDLE
-      ((state != STATE_LAST) && (state != STATE_IDLE)))         //  STATE_FIRST substituted by STATE_IDLE
-			state <= 3'd0;
-end
-*/
-////////////////////////// 
-
-
 reg  [2:0] state;
 reg [22:0] a;
 reg  [1:0] bank;
@@ -118,6 +103,15 @@ always @(posedge clk) begin
 
 	old_rd <= old_rd & rd;
 	old_wr <= old_wr & wr;
+
+   //////////////////////////  from sdram.v de10_lite port      (Core seems to work the same way without this chunk of code)
+   // SDRAM (state machine) clock is 85MHz. Synchronize this to systems 21.477 Mhz clock
+   // force counter to pass state LAST->FIRST exactly after the rising edge of clkref
+   if(((state == STATE_LAST) && ( clkref == 1)) ||			
+		((state == STATE_IDLE) && ( clkref == 0)) ||			//  STATE_FIRST from original code substituted by STATE_IDLE
+      ((state != STATE_LAST) && (state != STATE_IDLE)))         //  STATE_FIRST from original code substituted by STATE_IDLE
+				state <= 3'd0;
+	/////////////////////////
 
 	if(state == STATE_IDLE && mode == MODE_NORMAL) begin
 		ram_req <= 0;

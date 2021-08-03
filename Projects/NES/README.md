@@ -16,14 +16,14 @@ DECA Top level for NES by Somhic (16/07/21) adapted from DE10_lite port by Dar (
 
 **Versions**:
 
-- see changelog in top level file nes_deca.sv
-- This version is 4.8
+- current version: 4.9
+- see changelog in top level file deca/nes_deca.sv
 
 **Compiling:**
 
 * Load project  in NES/deca/nes_deca.qpf
 
-* sof file already included in NES/deca/output_files/nes_deca.sof
+* sof file already included in deca/output_files/nes_deca.sof
 
   
 
@@ -83,4 +83,4 @@ After any change compile again in Quartus to generate a new bitstream. I used Qu
 
 ### Additional comments
 
-See comments from DAR original port in top level file nes_deca.sv
+See comments from DAR original port in top level file deca/nes_deca.sv
