@@ -82,7 +82,7 @@ In the module code add and adapt this code with your own "reset" signal and a 50
 //  HDMI I2C CONFIG
 I2C_HDMI_Config u_I2C_HDMI_Config (
 	.iCLK(clock50),
-	.iRST_N(reset_n),
+    .iRST_N(reset_n),	// if reset_n is not high at bootup video will not be initialized. Try KEY0 button if having problems.
 	.I2C_SCLK(HDMI_I2C_SCL),
 	.I2C_SDAT(HDMI_I2C_SDA),
 	.HDMI_TX_INT(HDMI_TX_INT)
@@ -102,6 +102,14 @@ assign HDMI_LRCLK = i2sLr;
 assign HDMI_I2S[0] = i2sD;
 
 ```
+
+
+
+Note: When the original core has less than 8 bits per color then you can add zeros at the less significant bits or it is preferred to double the signal. So e.g. your core produces a 4 bit red signal to obtain a 8 bit signal just do `assign I_R = vga_r_s & vga_r_s`.
+
+
+
+**HDMI Audio DAC**
 
 For audio, signals i2sMck, i2sSck, i2sLr, i2sD should come from an I2S module from the original core. If the core has no I2S sound check the [Audio CODEC tutorial](https://github.com/SoCFPGA-learning/DECA/tree/main/Tutorials/Porting-Cores/AudioCODEC) to convert PWM audio to I2S audio.
 
