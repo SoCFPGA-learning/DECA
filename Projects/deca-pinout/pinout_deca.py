@@ -18,7 +18,7 @@ from pinout.components.legend import Legend
 import data
 
 # Create a new diagram
-diagram = Diagram(1650, 920, "diagram")
+diagram = Diagram(1480, 920, "diagram")
 
 # Add a stylesheet
 diagram.add_stylesheet("styles.css", embed=True)
@@ -26,7 +26,7 @@ diagram.add_stylesheet("styles.css", embed=True)
 # Create a layout
 content = diagram.add(
     Panel(
-        width=1650,
+        width=1480,
         height=800,
         inset=(2, 2, 2, 2),
     )
@@ -148,7 +148,7 @@ graphic.add(
         y=85,
         body={"width": 110, "height": 20},
         pin_pitch=(0, 28),
-        label_start=(240, 0),
+        label_start=(280, 0),
         label_pitch=(0, 28),
         scale=(-1, 1),
         labels=data.lhs_outer_numbered,
