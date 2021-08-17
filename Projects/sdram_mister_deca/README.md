@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga/DECA_board/tree/main/Sdram_mister_deca
+
+
+
 ## SDRAM Mister module adapter for DECA
 
 ### Objectives and considerations

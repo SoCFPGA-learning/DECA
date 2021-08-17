@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga
+
+
+
 # zx48 DECA port (HDMI version)
 
 Adapted from ua2 port (Unamiga) https://github.com/Kyp069/zx48   
@@ -55,3 +61,4 @@ Follows original readme.md.
 <li>Toggle RGB/VGA: scroll lock</li>
 </ul>
 <p>
+

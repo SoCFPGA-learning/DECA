@@ -1,3 +1,7 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga
+
 # DECA NeptUNO board test core
 
 Ported from https://github.com/neptuno-fpga/board_test

@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga
+
+
+
 # MemTest - Utility to test SDRAM daughter board.
 
 Ported from Neptuno port https://github.com/neptuno-fpga/MemTest_Mister

@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga
+
+
+
 # Pooyan DECA port 
 
 DECA port for Pooyan by Somhic (27/06/2021) adapted from DE10_lite by Dar https://sourceforge.net/projects/darfpga/files/Software%20VHDL/pooyan/
