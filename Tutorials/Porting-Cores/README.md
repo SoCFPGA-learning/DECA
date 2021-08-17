@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga/DECA_board/tree/main/Tutorials/Porting-Cores
+
+
+
 # Porting cores to DECA board
 
 See below for target cores and porting from them.

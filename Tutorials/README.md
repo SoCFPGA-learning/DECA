@@ -10,3 +10,7 @@ Check folders above which contain different tutorials.
 
 
 
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga
+

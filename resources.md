@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga/DECA_board/blob/main/resources.md
+
+
+
 # DECA Resources
 
 Follows a list of useful resources that were published mainly in the [DECA telegram group](https://t.me/Deca_Max10_FPGA) that are related to  DECA and Max10 FPGA family.

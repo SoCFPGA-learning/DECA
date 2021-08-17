@@ -1,3 +1,7 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga/DECA_board/tree/main/Tutorials/Porting-Cores
+
 # Using DECA's HDMI TX
 
 The development board provides High Performance HDMI Transmitter via the Analog Devices

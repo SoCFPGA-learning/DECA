@@ -1,3 +1,9 @@
+# [REPO TO BE DEPRECATED]
+
+# UPDATES WILL BE POSTED HERE https://github.com/DECAfpga/DECA_board/tree/main/Tutorials/Porting-Cores
+
+
+
 # Using DECA's integrated TLV320AIC3254 Audio DAC
 
 The DECA offers high-quality 24-bit audio via the Texas Instruments TLV320AIC3254 audio
